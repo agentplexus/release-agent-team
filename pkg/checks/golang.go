@@ -1,8 +1,11 @@
 package checks
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"os/exec"
+	"path/filepath"
 	"regexp"
 	"strings"
 )
@@ -42,6 +45,9 @@ func (c *GoChecker) Check(dir string, opts Options) []Result {
 	if opts.Test {
 		results = append(results, c.checkTest(dir))
 	}
+
+	// Error handling compliance check
+	results = append(results, c.checkErrorHandling(dir))
 
 	// Soft checks (warnings, don't fail build)
 	// Untracked file references
@@ -132,7 +138,7 @@ func (c *GoChecker) checkLint(dir string) Result {
 
 func (c *GoChecker) checkTest(dir string) Result {
 	name := "Go: tests"
-	return RunCommand(name, dir, "go", "test", "./...")
+	return RunCommand(name, dir, "go", "test", "-v", "./...")
 }
 
 func (c *GoChecker) checkCoverage(dir string, exclude string) Result {
@@ -240,6 +246,112 @@ func (c *GoChecker) checkModTidyFallback(dir string) Result {
 func (c *GoChecker) checkBuild(dir string) Result {
 	name := "Go: build"
 	return RunCommand(name, dir, "go", "build", "./...")
+}
+
+// checkErrorHandling checks for improper error handling patterns.
+// Detects: _ = err, _ = someFunc() where func returns error
+func (c *GoChecker) checkErrorHandling(dir string) Result {
+	name := "Go: error handling compliance"
+
+	var violations []string
+
+	// Patterns that indicate improper error handling
+	// Match: _ = err or _ = someVar where someVar might be an error
+	discardPattern := regexp.MustCompile(`_\s*=\s*err\b`)
+	// Match: _ = functionCall() - potential error discard
+	discardFuncPattern := regexp.MustCompile(`_\s*=\s*\w+\([^)]*\)`)
+	// Match: _ = pkg.FunctionCall()
+	discardPkgFuncPattern := regexp.MustCompile(`_\s*=\s*\w+\.\w+\([^)]*\)`)
+
+	err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return nil // Skip files we can't read
+		}
+		if info.IsDir() {
+			// Skip vendor and hidden directories
+			if info.Name() == "vendor" || strings.HasPrefix(info.Name(), ".") {
+				return filepath.SkipDir
+			}
+			return nil
+		}
+		if !strings.HasSuffix(path, ".go") {
+			return nil
+		}
+		// Skip test files for this check (test files often legitimately discard errors)
+		if strings.HasSuffix(path, "_test.go") {
+			return nil
+		}
+
+		file, err := os.Open(path)
+		if err != nil {
+			return nil
+		}
+		defer func() {
+			if cerr := file.Close(); cerr != nil {
+				// Close errors on read-only files are non-actionable; continue walking
+				_ = cerr
+			}
+		}()
+
+		scanner := bufio.NewScanner(file)
+		lineNum := 0
+		for scanner.Scan() {
+			lineNum++
+			line := scanner.Text()
+
+			// Skip comments
+			trimmed := strings.TrimSpace(line)
+			if strings.HasPrefix(trimmed, "//") {
+				continue
+			}
+
+			// Check for direct error discard: _ = err
+			if discardPattern.MatchString(line) {
+				relPath, _ := filepath.Rel(dir, path)
+				violations = append(violations, fmt.Sprintf("%s:%d: _ = err (error discarded)", relPath, lineNum))
+				continue
+			}
+
+			// Check for function call discard that might return error
+			// Only flag if the line doesn't have a comment explaining why
+			if discardFuncPattern.MatchString(line) || discardPkgFuncPattern.MatchString(line) {
+				// Check if there's a comment on the same line explaining the discard
+				if !strings.Contains(line, "//") {
+					relPath, _ := filepath.Rel(dir, path)
+					violations = append(violations, fmt.Sprintf("%s:%d: potential error discard without comment", relPath, lineNum))
+				}
+			}
+		}
+
+		return nil
+	})
+
+	if err != nil {
+		return Result{
+			Name:   name,
+			Passed: false,
+			Error:  err,
+		}
+	}
+
+	if len(violations) > 0 {
+		// Limit output to first 10 violations
+		output := violations
+		if len(output) > 10 {
+			output = output[:10]
+			output = append(output, fmt.Sprintf("... and %d more violations", len(violations)-10))
+		}
+		return Result{
+			Name:   name,
+			Passed: false,
+			Output: strings.Join(output, "\n"),
+		}
+	}
+
+	return Result{
+		Name:   name,
+		Passed: true,
+	}
 }
 
 func (c *GoChecker) checkUntrackedReferences(dir string) Result {

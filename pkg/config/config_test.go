@@ -35,7 +35,7 @@ languages:
   typescript:
     enabled: false
 `
-	if err := os.WriteFile(filepath.Join(dir, ".prepush.yaml"), []byte(configContent), 0600); err != nil {
+	if err := os.WriteFile(filepath.Join(dir, ".releaseagent.yaml"), []byte(configContent), 0600); err != nil {
 		t.Fatal(err)
 	}
 
@@ -58,7 +58,7 @@ languages:
 }
 
 func TestLoad_AlternateNames(t *testing.T) {
-	names := []string{".prepush.yaml", ".prepush.yml", "prepush.yaml", "prepush.yml"}
+	names := []string{".releaseagent.yaml", ".releaseagent.yml"}
 
 	for _, name := range names {
 		t.Run(name, func(t *testing.T) {

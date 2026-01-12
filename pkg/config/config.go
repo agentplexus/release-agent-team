@@ -1,4 +1,4 @@
-// Package config provides configuration file support for prepush.
+// Package config provides configuration file support for release-agent.
 package config
 
 import (
@@ -7,7 +7,7 @@ import (
 	"gopkg.in/yaml.v3"
 )
 
-// Config represents the .prepush.yaml configuration.
+// Config represents the .releaseagent.yaml configuration.
 type Config struct {
 	// Global settings
 	Verbose bool `yaml:"verbose"`
@@ -37,17 +37,15 @@ func DefaultConfig() Config {
 	}
 }
 
-// Load reads configuration from .prepush.yaml in the given directory.
+// Load reads configuration from .releaseagent.yaml in the given directory.
 // Returns default config if file doesn't exist.
 func Load(dir string) (Config, error) {
 	cfg := DefaultConfig()
 
 	// Try multiple config file names
 	configFiles := []string{
-		dir + "/.prepush.yaml",
-		dir + "/.prepush.yml",
-		dir + "/prepush.yaml",
-		dir + "/prepush.yml",
+		dir + "/.releaseagent.yaml",
+		dir + "/.releaseagent.yml",
 	}
 
 	var data []byte
