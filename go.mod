@@ -1,6 +1,6 @@
 module github.com/agentplexus/release-agent-team
 
-go 1.23
+go 1.24.0
 
 require (
 	github.com/agentplexus/aiassistkit v0.0.0
@@ -10,7 +10,7 @@ require (
 )
 
 require (
-	github.com/agentplexus/multi-agent-spec/sdk/go v0.0.0 // indirect
+	github.com/agentplexus/multi-agent-spec/sdk/go v0.1.0 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.4 // indirect
 	github.com/spf13/pflag v1.0.9 // indirect
