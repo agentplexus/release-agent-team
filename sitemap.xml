@@ -1,79 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://grokify.github.io/release-agent/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/configuration/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/configuration/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/example-report/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/example-report/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/output-formats/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/output-formats/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/changelog/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/changelog/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/check/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/check/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/readme/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/readme/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/release/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/release/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/roadmap/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/roadmap/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/validate/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/validate/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/commands/version/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/commands/version/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/getting-started/installation/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/getting-started/installation/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/getting-started/quickstart/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/getting-started/quickstart/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/integrations/claude-code/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/integrations/claude-code/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/integrations/git-hooks/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/integrations/git-hooks/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/releases/v0.1.0/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/releases/v0.1.0/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/releases/v0.2.0/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/releases/v0.2.0/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
     <url>
-         <loc>https://grokify.github.io/release-agent/releases/v0.3.0/</loc>
-         <lastmod>2026-01-12</lastmod>
+         <loc>https://agentplexus.github.io/release-agent-team/releases/v0.3.0/</loc>
+         <lastmod>2026-01-17</lastmod>
+    </url>
+    <url>
+         <loc>https://agentplexus.github.io/release-agent-team/releases/v0.4.0/</loc>
+         <lastmod>2026-01-17</lastmod>
     </url>
 </urlset>
