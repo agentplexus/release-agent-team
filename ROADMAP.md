@@ -60,13 +60,13 @@ Create and push release tags
 
 **Version:** 0.3.0
 
-### [x] `releaseagent check` subcommand
+### [x] `release-agent-team check` subcommand
 
 Move validation to check subcommand
 
 **Version:** 0.3.0
 
-### [x] `releaseagent validate` subcommand
+### [x] `release-agent-team validate` subcommand
 
 Comprehensive Go/No-Go validation across 4 areas
 
@@ -102,7 +102,7 @@ Version format, git status, CI configuration validation
 
 **Version:** 0.3.0
 
-### [x] `releaseagent version` subcommand
+### [x] `release-agent-team version` subcommand
 
 Show version information
 
@@ -146,7 +146,7 @@ pkg/workflow with Workflow/Runner for multi-step releases
 
 **Version:** 0.3.0
 
-### [x] `releaseagent release` command
+### [x] `release-agent-team release` command
 
 Full release workflow with version argument
 

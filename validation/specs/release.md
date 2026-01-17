@@ -195,13 +195,13 @@ After all Phase 1 validations pass and fixes are committed:
 
 ```bash
 # Full release workflow
-releaseagent release vX.Y.Z
+release-agent-team release vX.Y.Z
 
 # Dry run first
-releaseagent release vX.Y.Z --dry-run
+release-agent-team release vX.Y.Z --dry-run
 
 # Skip CI wait (use with caution)
-releaseagent release vX.Y.Z --skip-ci
+release-agent-team release vX.Y.Z --skip-ci
 ```
 
 ## Reporting Format

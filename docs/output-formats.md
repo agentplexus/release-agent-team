@@ -51,7 +51,7 @@ Pre-push checks passed with warnings.
 Standard JSON output for programmatic consumption:
 
 ```bash
-releaseagent check --json --format=json
+release-agent-team check --json --format=json
 ```
 
 ```json
@@ -86,7 +86,7 @@ releaseagent check --json --format=json
 Token-Oriented Object Notation is approximately 8x more token-efficient than JSON, optimized for LLM consumption:
 
 ```bash
-releaseagent check --json --format=toon
+release-agent-team check --json --format=toon
 ```
 
 ```
@@ -108,7 +108,7 @@ passed:7|failed:0|skipped:0|warnings:1
 The team format provides a structured box report for release validation:
 
 ```bash
-releaseagent validate --format team --version=v1.0.0
+release-agent-team validate --format team --version=v1.0.0
 ```
 
 ```
@@ -161,13 +161,13 @@ Some flags can be combined:
 
 ```bash
 # JSON output with TOON format
-releaseagent check --json --format=toon
+release-agent-team check --json --format=toon
 
 # Verbose human-readable
-releaseagent check --verbose
+release-agent-team check --verbose
 
 # Team format with verbose details
-releaseagent validate --format team --verbose
+release-agent-team validate --format team --verbose
 ```
 
 ## Parsing Output
@@ -176,10 +176,10 @@ releaseagent validate --format team --verbose
 
 ```bash
 # Get pass/fail status
-releaseagent check --json --format=json | jq '.summary.failed'
+release-agent-team check --json --format=json | jq '.summary.failed'
 
 # List failed checks
-releaseagent check --json --format=json | jq '.results[] | select(.passed == false)'
+release-agent-team check --json --format=json | jq '.results[] | select(.passed == false)'
 ```
 
 ### TOON in Python

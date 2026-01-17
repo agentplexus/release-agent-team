@@ -571,7 +571,7 @@ roadmap:
 
 ## Release Workflow
 
-The `releaseagent release` command executes a 9-step workflow:
+The `release-agent-team release` command executes a 9-step workflow:
 
 ```
 1. Validate version      [REQUIRED]  Check format, ensure tag doesn't exist

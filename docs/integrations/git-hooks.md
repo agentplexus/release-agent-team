@@ -11,7 +11,7 @@ Create `.git/hooks/pre-push` manually:
 ```bash
 cat > .git/hooks/pre-push << 'EOF'
 #!/bin/bash
-exec releaseagent check
+exec release-agent-team check
 EOF
 
 chmod +x .git/hooks/pre-push
@@ -22,10 +22,10 @@ chmod +x .git/hooks/pre-push
 Create a symlink to the Release Agent binary:
 
 ```bash
-ln -sf $(which releaseagent) .git/hooks/pre-push
+ln -sf $(which release-agent-team) .git/hooks/pre-push
 ```
 
-Note: This runs `releaseagent` with no arguments, which defaults to `check`.
+Note: This runs `release-agent-team` with no arguments, which defaults to `check`.
 
 ### Option 3: Shared Hooks Directory
 
@@ -38,7 +38,7 @@ mkdir -p .githooks
 # Create the hook
 cat > .githooks/pre-push << 'EOF'
 #!/bin/bash
-exec releaseagent check
+exec release-agent-team check
 EOF
 
 chmod +x .githooks/pre-push
@@ -94,14 +94,14 @@ git push -n
 ```bash
 #!/bin/bash
 # Skip tests for faster push (run in CI)
-exec releaseagent check --no-test
+exec release-agent-team check --no-test
 ```
 
 ### Verbose Output
 
 ```bash
 #!/bin/bash
-exec releaseagent check --verbose
+exec release-agent-team check --verbose
 ```
 
 ### Different Config for Hooks
@@ -109,7 +109,7 @@ exec releaseagent check --verbose
 ```bash
 #!/bin/bash
 # Use hook-specific config
-RELEASEAGENT_CONFIG=.releaseagent.hooks.yaml exec releaseagent check
+RELEASEAGENT_CONFIG=.releaseagent.hooks.yaml exec release-agent-team check
 ```
 
 ## CI Integration
@@ -136,7 +136,7 @@ jobs:
       - name: Install Release Agent
         run: go install github.com/grokify/release-agent/cmd/releaseagent@latest
       - name: Run checks
-        run: releaseagent check
+        run: release-agent-team check
 ```
 
 ## Troubleshooting
@@ -157,7 +157,7 @@ The hook runs in the repository root. Use absolute paths if needed:
 ```bash
 #!/bin/bash
 cd "$(git rev-parse --show-toplevel)"
-exec releaseagent check
+exec release-agent-team check
 ```
 
 ### Release Agent Not Found
@@ -167,7 +167,7 @@ Ensure Release Agent is in your PATH:
 ```bash
 #!/bin/bash
 export PATH="$HOME/go/bin:$PATH"
-exec releaseagent check
+exec release-agent-team check
 ```
 
 ### Slow Hooks
@@ -177,7 +177,7 @@ For faster feedback, skip time-consuming checks:
 ```bash
 #!/bin/bash
 # Fast checks only - full checks run in CI
-exec releaseagent check --no-test --no-coverage
+exec release-agent-team check --no-test --no-coverage
 ```
 
 ## Team Guidelines

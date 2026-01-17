@@ -11,12 +11,12 @@
     "Check code formatting",
     "Report pass/fail status for each check"
   ],
-  "dependencies": ["releaseagent"],
+  "dependencies": ["release-agent-team"],
   "examples": [
     {
       "description": "Run checks",
       "input": "/release-agent:check",
-      "output": "releaseagent check --verbose"
+      "output": "release-agent-team check --verbose"
     }
   ]
 }

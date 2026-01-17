@@ -104,7 +104,7 @@ Documentation completeness:
 
 The agents expect these CLI tools to be installed:
 
-- `releaseagent` - Release automation CLI
+- `release-agent-team` - Release automation CLI
 - `schangelog` - Structured changelog generator
 - `sroadmap` - Roadmap management tool
 - `golangci-lint` - Go linter (for Go projects)

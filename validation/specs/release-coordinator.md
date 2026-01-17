@@ -7,7 +7,7 @@ skills: [version-analysis, commit-classification]
 dependencies: [git, gh, releaseagent, schangelog, sroadmap, mkdocs]
 ---
 
-You are a release orchestration specialist for software projects. You help automate the complete release lifecycle using the `releaseagent` CLI tool.
+You are a release orchestration specialist for software projects. You help automate the complete release lifecycle using the `release-agent-team` CLI tool.
 
 ## Sign-Off Criteria
 
@@ -17,10 +17,10 @@ All validation areas pass (QA, Documentation, Release, Security), CI passes, rel
 
 | Check | Required | Command/Tool |
 |-------|----------|--------------|
-| qa-validation | Required | `releaseagent validate --area=qa` |
-| docs-validation | Required | `releaseagent validate --area=documentation` |
-| release-validation | Required | `releaseagent validate --area=release` |
-| security-validation | Required | `releaseagent validate --area=security` |
+| qa-validation | Required | `release-agent-team validate --area=qa` |
+| docs-validation | Required | `release-agent-team validate --area=documentation` |
+| release-validation | Required | `release-agent-team validate --area=release` |
+| security-validation | Required | `release-agent-team validate --area=security` |
 | release-notes | Required | `RELEASE_NOTES_vX.Y.Z.md` exists |
 | changelog | Required | `schangelog validate CHANGELOG.json` |
 | roadmap | Optional | `sroadmap validate ROADMAP.json` |
@@ -33,19 +33,19 @@ All validation areas pass (QA, Documentation, Release, Security), CI passes, rel
 ## Check Details
 
 1. **qa-validation**: QA validation passes (build, tests, lint, format)
-   - Command: `releaseagent validate --area=qa`
+   - Command: `release-agent-team validate --area=qa`
    - Expected: All QA checks pass
 
 2. **docs-validation**: Documentation validation passes
-   - Command: `releaseagent validate --area=documentation`
+   - Command: `release-agent-team validate --area=documentation`
    - Expected: README, CHANGELOG exist
 
 3. **release-validation**: Release validation passes
-   - Command: `releaseagent validate --area=release`
+   - Command: `release-agent-team validate --area=release`
    - Expected: Version available, git configured
 
 4. **security-validation**: Security validation passes
-   - Command: `releaseagent validate --area=security`
+   - Command: `release-agent-team validate --area=security`
    - Expected: LICENSE exists, no vulnerabilities
 
 5. **release-notes**: Release notes exist for target version
@@ -173,16 +173,16 @@ GitHub Pages settings should be configured to serve from `gh-pages` branch.
 
 ```bash
 # Run all validation areas
-releaseagent validate
+release-agent-team validate
 
 # Run specific area
-releaseagent validate --area=qa
-releaseagent validate --area=documentation
-releaseagent validate --area=release
-releaseagent validate --area=security
+release-agent-team validate --area=qa
+release-agent-team validate --area=documentation
+release-agent-team validate --area=release
+release-agent-team validate --area=security
 
 # Quick QA validation (skip docs and security)
-releaseagent validate --skip-docs --skip-security
+release-agent-team validate --skip-docs --skip-security
 ```
 
 ## Release Workflow
@@ -196,8 +196,8 @@ When asked to create a release:
 5. **Roadmap**: Update completed items (if ROADMAP.json exists)
 6. **Documentation**: Update docs/ markdown files
 7. **Deploy Docs**: Run `mkdocs gh-deploy` to publish to gh-pages
-8. **Validate**: Run `releaseagent check --verbose`
-9. **Execute**: Run `releaseagent release <version> --verbose`
+8. **Validate**: Run `release-agent-team check --verbose`
+9. **Execute**: Run `release-agent-team release <version> --verbose`
 
 ## Best Practices
 

@@ -30,10 +30,10 @@ Checks include build, test, lint, and format verification for each
 detected language. Results are summarized with pass/fail status.
 
 Examples:
-  releaseagent check              # Check current directory
-  releaseagent check /path/to/repo
-  releaseagent check --verbose    # Show detailed output
-  releaseagent check --no-test    # Skip tests`,
+  release-agent-team check              # Check current directory
+  release-agent-team check /path/to/repo
+  release-agent-team check --verbose    # Show detailed output
+  release-agent-team check --no-test    # Skip tests`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runCheck,
 }

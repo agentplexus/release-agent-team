@@ -59,7 +59,7 @@ When running with `--interactive`, Release Agent can:
 ```
 Claude: I'll run the release checks for v1.0.0.
 
-[Running releaseagent check --interactive --json]
+[Running release-agent-team check --interactive --json]
 
 Release Agent: Found 2 lint issues. Would you like me to:
 1. Show the issues and let you fix them
@@ -114,7 +114,7 @@ The release coordinator agent can orchestrate complete releases autonomously:
 For token-efficient communication, use TOON format:
 
 ```bash
-releaseagent check --json --format=toon
+release-agent-team check --json --format=toon
 ```
 
 TOON is approximately 8x more token-efficient than JSON.
@@ -124,7 +124,7 @@ TOON is approximately 8x more token-efficient than JSON.
 For structured communication:
 
 ```bash
-releaseagent check --interactive --json
+release-agent-team check --interactive --json
 ```
 
 Questions and proposals are returned as structured JSON:
@@ -184,7 +184,7 @@ Release Agent also supports Gemini CLI through platform adapters. The same plugi
 Ensure Release Agent is installed:
 
 ```bash
-which releaseagent
+which release-agent-team
 ```
 
 ### Permission Errors
@@ -202,7 +202,7 @@ Grant these permissions when prompted.
 If CI takes longer than expected:
 
 ```bash
-releaseagent release v1.0.0 --skip-ci
+release-agent-team release v1.0.0 --skip-ci
 ```
 
 Note: This tags before CI passes, which is not recommended.

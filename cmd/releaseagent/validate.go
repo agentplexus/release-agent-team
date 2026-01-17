@@ -40,11 +40,11 @@ Validation Areas:
 Assumes Engineering and Product have already signed off.
 
 Examples:
-  releaseagent validate                    # Validate current directory
-  releaseagent validate --version v0.2.0   # Include version-specific checks
-  releaseagent validate --skip-qa          # Skip QA checks
-  releaseagent validate --format team      # Team status report format
-  releaseagent validate -v                 # Verbose output`,
+  release-agent-team validate                    # Validate current directory
+  release-agent-team validate --version v0.2.0   # Include version-specific checks
+  release-agent-team validate --skip-qa          # Skip QA checks
+  release-agent-team validate --format team      # Team status report format
+  release-agent-team validate -v                 # Verbose output`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runValidate,
 }

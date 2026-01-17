@@ -8,7 +8,7 @@
 
 **Multi-agent release preparation team for multi-language repositories.**
 
-Release Agent Team validates code quality, generates changelogs, updates documentation, and manages the complete release lifecycle using a team of specialized agents (PM, QA, Documentation, Security, Release). It supports monorepos with multiple languages and integrates with Claude Code, Kiro CLI, and other AI assistant platforms.
+Release Agent validates code quality, generates changelogs, updates documentation, and manages the complete release lifecycle. It supports monorepos with multiple languages and integrates with Claude Code as an interactive subagent.
 
 ## Features
 
@@ -31,73 +31,73 @@ go install github.com/agentplexus/release-agent-team/cmd/releaseagent@latest
 ### Homebrew
 
 ```bash
-brew install agentplexus/tap/releaseagent
+brew install agentplexus/tap/release-agent-team
 ```
 
 ## Quick Start
 
 ```bash
 # Run validation checks in current directory
-releaseagent check
+release-agent-team check
 
 # Run comprehensive validation with Go/No-Go report
-releaseagent validate --version=v1.0.0
+release-agent-team validate --version=v1.0.0
 
 # Execute full release workflow
-releaseagent release v1.0.0
+release-agent-team release v1.0.0
 
 # Generate changelog
-releaseagent changelog --since=v0.9.0
+release-agent-team changelog --since=v0.9.0
 
 # Show version
-releaseagent version
+release-agent-team version
 ```
 
 ## Commands
 
-### `releaseagent check`
+### `release-agent-team check`
 
 Run validation checks for all detected languages.
 
 ```bash
-releaseagent check [directory]
+release-agent-team check [directory]
 
 # With options
-releaseagent check --verbose
-releaseagent check --no-test --no-lint
-releaseagent check --coverage
-releaseagent check --go-no-go  # NASA-style Go/No-Go report
+release-agent-team check --verbose
+release-agent-team check --no-test --no-lint
+release-agent-team check --coverage
+release-agent-team check --go-no-go  # NASA-style Go/No-Go report
 ```
 
-### `releaseagent validate`
+### `release-agent-team validate`
 
 Run comprehensive validation across all areas (QA, Documentation, Release, Security).
 
 ```bash
-releaseagent validate [directory]
+release-agent-team validate [directory]
 
 # With version-specific checks
-releaseagent validate --version=v1.0.0
+release-agent-team validate --version=v1.0.0
 
 # Skip specific areas
-releaseagent validate --skip-qa --skip-docs --skip-security
+release-agent-team validate --skip-qa --skip-docs --skip-security
 
 # Team status report format (template-based)
-releaseagent validate --format team
+release-agent-team validate --format team
 ```
 
-### `releaseagent release`
+### `release-agent-team release`
 
 Execute the full release workflow.
 
 ```bash
-releaseagent release <version>
+release-agent-team release <version>
 
 # Examples
-releaseagent release v1.0.0
-releaseagent release v1.0.0 --dry-run      # Preview without changes
-releaseagent release v1.0.0 --skip-ci      # Don't wait for CI
-releaseagent release v1.0.0 --verbose
+release-agent-team release v1.0.0
+release-agent-team release v1.0.0 --dry-run      # Preview without changes
+release-agent-team release v1.0.0 --skip-ci      # Don't wait for CI
+release-agent-team release v1.0.0 --verbose
 ```
 
 **Release workflow steps:**
@@ -112,41 +112,41 @@ releaseagent release v1.0.0 --verbose
 8. Wait for CI to pass
 9. Create and push release tag
 
-### `releaseagent changelog`
+### `release-agent-team changelog`
 
 Generate or update changelog using schangelog.
 
 ```bash
-releaseagent changelog [directory]
-releaseagent changelog --since=v0.9.0
-releaseagent changelog --dry-run
+release-agent-team changelog [directory]
+release-agent-team changelog --since=v0.9.0
+release-agent-team changelog --dry-run
 ```
 
-### `releaseagent readme`
+### `release-agent-team readme`
 
 Update README badges and version references.
 
 ```bash
-releaseagent readme [directory]
-releaseagent readme --version=v1.0.0
-releaseagent readme --dry-run
+release-agent-team readme [directory]
+release-agent-team readme --version=v1.0.0
+release-agent-team readme --dry-run
 ```
 
-### `releaseagent roadmap`
+### `release-agent-team roadmap`
 
 Update roadmap using sroadmap.
 
 ```bash
-releaseagent roadmap [directory]
-releaseagent roadmap --dry-run
+release-agent-team roadmap [directory]
+release-agent-team roadmap --dry-run
 ```
 
-### `releaseagent version`
+### `release-agent-team version`
 
 Show version information.
 
 ```bash
-releaseagent version
+release-agent-team version
 ```
 
 ## Global Flags
@@ -236,13 +236,13 @@ languages:
 
 ## Git Hook Integration
 
-To run releaseagent automatically before every `git push`:
+To run release-agent-team automatically before every `git push`:
 
 ```bash
 # Create the hook
 cat > .git/hooks/pre-push << 'EOF'
 #!/bin/bash
-exec releaseagent check
+exec release-agent-team check
 EOF
 
 # Make it executable
@@ -287,7 +287,7 @@ Structured box report with per-team validation results:
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                             TEAM STATUS REPORT                             ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║ Project: github.com/agentplexus/release-agent-team                         ║
+║ Project: github.com/agentplexus/release-agent-team                                  ║
 ║ Target:  v0.3.0                                                            ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║ RELEASE VALIDATION                                                         ║
@@ -315,9 +315,9 @@ claude plugin add github:agentplexus/release-agent-team/plugins/claude
 
 The plugin includes:
 
-- **Commands**: `/release-agent-team:release`, `/release-agent-team:check`, `/release-agent-team:changelog`, `/release-agent-team:version-next`
+- **Commands**: `/release-agent:release`, `/release-agent:check`, `/release-agent:changelog`, `/release-agent:version-next`
 - **Skills**: Version analysis, commit classification
-- **Agents**: 6 specialized agents (PM, QA, Documentation, Security, Release, Coordinator)
+- **Agents**: Release coordinator subagent for orchestrating complete releases
 
 See [plugins/claude/README.md](plugins/claude/README.md) for full plugin documentation.
 
@@ -330,8 +330,8 @@ Use `--interactive` flag to enable Q&A mode where Release Agent can:
 - Get user approval before making changes
 
 ```bash
-releaseagent check --interactive
-releaseagent release v1.0.0 --interactive
+release-agent-team check --interactive
+release-agent-team release v1.0.0 --interactive
 ```
 
 ## Examples
@@ -339,7 +339,7 @@ releaseagent release v1.0.0 --interactive
 ### Go Project
 
 ```
-$ releaseagent check
+$ release-agent-team check
 === Pre-push Checks ===
 
 Detecting languages...
@@ -364,7 +364,7 @@ All pre-push checks passed!
 ### Comprehensive Validation
 
 ```
-$ releaseagent validate --version=v1.0.0
+$ release-agent-team validate --version=v1.0.0
 
 === Release Validation: v1.0.0 ===
 
@@ -383,7 +383,7 @@ $ releaseagent validate --version=v1.0.0
 ### Full Release
 
 ```
-$ releaseagent release v1.0.0 --verbose
+$ release-agent-team release v1.0.0 --verbose
 
 [1/9] Validating version...
       ✓ Version v1.0.0 is valid and available

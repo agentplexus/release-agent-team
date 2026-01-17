@@ -7,7 +7,7 @@ This guide walks you through your first use of Release Agent.
 Navigate to a Go, TypeScript, or JavaScript project and run:
 
 ```bash
-releaseagent check
+release-agent-team check
 ```
 
 Release Agent automatically detects the language(s) in your repository and runs appropriate checks.
@@ -43,7 +43,7 @@ Pre-push checks passed with warnings.
 For a full release readiness assessment:
 
 ```bash
-releaseagent validate --version=v1.0.0
+release-agent-team validate --version=v1.0.0
 ```
 
 This runs checks across all four validation areas:
@@ -58,7 +58,7 @@ This runs checks across all four validation areas:
 For a structured team report format:
 
 ```bash
-releaseagent validate --format team --version=v1.0.0
+release-agent-team validate --format team --version=v1.0.0
 ```
 
 Output:
@@ -85,10 +85,10 @@ When you're ready to release:
 
 ```bash
 # Preview what will happen
-releaseagent release v1.0.0 --dry-run
+release-agent-team release v1.0.0 --dry-run
 
 # Execute the release
-releaseagent release v1.0.0
+release-agent-team release v1.0.0
 ```
 
 The release workflow:

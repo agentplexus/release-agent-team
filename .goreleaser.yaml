@@ -1,9 +1,9 @@
-# GoReleaser configuration for release-agent
+# GoReleaser configuration for release-agent-team
 # Documentation: https://goreleaser.com
 
 version: 2
 
-project_name: releaseagent
+project_name: release-agent-team
 
 before:
   hooks:
@@ -11,9 +11,9 @@ before:
     - go generate ./...
 
 builds:
-  - id: releaseagent
+  - id: release-agent-team
     main: ./cmd/releaseagent
-    binary: releaseagent
+    binary: release-agent-team
     env:
       - CGO_ENABLED=0
     goos:
@@ -31,9 +31,9 @@ builds:
     mod_timestamp: '{{ .CommitTimestamp }}'
 
 archives:
-  - id: releaseagent
+  - id: release-agent-team
     builds:
-      - releaseagent
+      - release-agent-team
     format: tar.gz
     name_template: >-
       {{ .ProjectName }}_
@@ -107,13 +107,13 @@ release:
     go install github.com/agentplexus/release-agent-team/cmd/releaseagent@{{ .Tag }}
 
     # Homebrew (macOS/Linux)
-    brew install agentplexus/tap/releaseagent
+    brew install agentplexus/tap/release-agent-team
     ```
 
 brews:
-  - name: releaseagent
+  - name: release-agent-team
     ids:
-      - releaseagent
+      - release-agent-team
     repository:
       owner: agentplexus
       name: homebrew-tap
@@ -126,9 +126,9 @@ brews:
       - name: git
       - name: gh
     test: |
-      system "#{bin}/releaseagent", "version"
+      system "#{bin}/release-agent-team", "version"
     install: |
-      bin.install "releaseagent"
+      bin.install "release-agent-team"
 
 announce:
   skip: true

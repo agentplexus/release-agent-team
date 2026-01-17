@@ -28,9 +28,9 @@ Requires schangelog to be installed:
   go install github.com/grokify/schangelog/cmd/schangelog@latest
 
 Examples:
-  releaseagent changelog                    # Parse commits since latest tag
-  releaseagent changelog --since=v0.2.0     # Parse commits since v0.2.0
-  releaseagent changelog --dry-run          # Show what would be done`,
+  release-agent-team changelog                    # Parse commits since latest tag
+  release-agent-team changelog --since=v0.2.0     # Parse commits since v0.2.0
+  release-agent-team changelog --dry-run          # Show what would be done`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runChangelog,
 }

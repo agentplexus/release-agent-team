@@ -5,7 +5,7 @@ Execute the full release workflow.
 ## Usage
 
 ```bash
-releaseagent release <version> [flags]
+release-agent-team release <version> [flags]
 ```
 
 ## Description
@@ -49,19 +49,19 @@ The release command executes these 9 steps in order:
 
 ```bash
 # Execute full release
-releaseagent release v1.0.0
+release-agent-team release v1.0.0
 
 # Preview without making changes
-releaseagent release v1.0.0 --dry-run
+release-agent-team release v1.0.0 --dry-run
 
 # Skip CI waiting (dangerous - tag before CI passes)
-releaseagent release v1.0.0 --skip-ci
+release-agent-team release v1.0.0 --skip-ci
 
 # Verbose output
-releaseagent release v1.0.0 --verbose
+release-agent-team release v1.0.0 --verbose
 
 # Interactive mode (for Claude Code)
-releaseagent release v1.0.0 --interactive
+release-agent-team release v1.0.0 --interactive
 ```
 
 ## Output
@@ -141,7 +141,7 @@ With `--interactive`, Release Agent can:
 This is designed for use with Claude Code:
 
 ```bash
-releaseagent release v1.0.0 --interactive --json
+release-agent-team release v1.0.0 --interactive --json
 ```
 
 ## Exit Codes

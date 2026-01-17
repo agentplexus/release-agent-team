@@ -93,7 +93,7 @@ As a developer, I want a single command to handle the entire release so that I d
 
 **Acceptance Criteria:**
 
-- `releaseagent release v1.2.0` runs complete workflow
+- `release-agent-team release v1.2.0` runs complete workflow
 - Validates all checks pass before proceeding
 - Generates changelog for the release
 - Creates release commit with proper message
@@ -125,8 +125,8 @@ As a Claude Code user, I want to invoke release-agent via `/release-agent` so th
 | TypeScript/JavaScript checks | P0 | Complete |
 | Configuration file support | P0 | Complete |
 | Adopt cobra for CLI | P0 | Complete |
-| `releaseagent check` subcommand | P0 | Complete |
-| `releaseagent version` subcommand | P0 | Complete |
+| `release-agent-team check` subcommand | P0 | Complete |
+| `release-agent-team version` subcommand | P0 | Complete |
 
 ### Phase 2: Actions
 
@@ -137,16 +137,16 @@ As a Claude Code user, I want to invoke release-agent via `/release-agent` so th
 | sroadmap integration | P1 | Complete |
 | Coverage badge updates | P1 | Complete |
 | README version updates | P1 | Complete |
-| `releaseagent changelog` command | P0 | Complete |
-| `releaseagent readme` command | P1 | Complete |
-| `releaseagent roadmap` command | P1 | Complete |
+| `release-agent-team changelog` command | P0 | Complete |
+| `release-agent-team readme` command | P1 | Complete |
+| `release-agent-team roadmap` command | P1 | Complete |
 
 ### Phase 3: Release Workflow
 
 | Feature | Priority | Status |
 |---------|----------|--------|
 | Workflow engine | P0 | Complete |
-| `releaseagent release` command | P0 | Complete |
+| `release-agent-team release` command | P0 | Complete |
 | CI status checking | P1 | Complete |
 | Tag creation | P0 | Complete |
 | Git wrapper package | P0 | Complete |
@@ -255,33 +255,33 @@ release:
 
 ```bash
 # Validation
-releaseagent check [directory]
-releaseagent check --no-test --no-lint
-releaseagent check --go-no-go
-releaseagent validate --version=v1.0.0
-releaseagent validate --skip-qa --skip-docs --skip-security
-releaseagent validate --format team  # Team status report
+release-agent-team check [directory]
+release-agent-team check --no-test --no-lint
+release-agent-team check --go-no-go
+release-agent-team validate --version=v1.0.0
+release-agent-team validate --skip-qa --skip-docs --skip-security
+release-agent-team validate --format team  # Team status report
 
 # Actions
-releaseagent changelog [--since=v1.0.0]
-releaseagent readme [--version=v1.1.0]
-releaseagent roadmap
+release-agent-team changelog [--since=v1.0.0]
+release-agent-team readme [--version=v1.1.0]
+release-agent-team roadmap
 
 # Release workflow
-releaseagent release v1.1.0
-releaseagent release v1.1.0 --skip-ci
-releaseagent release v1.1.0 --dry-run
+release-agent-team release v1.1.0
+release-agent-team release v1.1.0 --skip-ci
+release-agent-team release v1.1.0 --dry-run
 
 # Interactive mode (for Claude Code)
-releaseagent check --interactive
-releaseagent release v1.1.0 --interactive
+release-agent-team check --interactive
+release-agent-team release v1.1.0 --interactive
 
 # Output formats
-releaseagent check --json --format=toon
-releaseagent release v1.1.0 --json --format=json
+release-agent-team check --json --format=toon
+release-agent-team release v1.1.0 --json --format=json
 
 # Version
-releaseagent version
+release-agent-team version
 ```
 
 ### Validation Areas

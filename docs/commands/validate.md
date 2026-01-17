@@ -5,7 +5,7 @@ Run comprehensive release validation across all areas of responsibility.
 ## Usage
 
 ```bash
-releaseagent validate [directory] [flags]
+release-agent-team validate [directory] [flags]
 ```
 
 ## Description
@@ -82,19 +82,19 @@ LICENSE, vulnerability scan, dependency audit, and secret detection.
 
 ```bash
 # Basic validation
-releaseagent validate
+release-agent-team validate
 
 # With version-specific checks
-releaseagent validate --version=v1.0.0
+release-agent-team validate --version=v1.0.0
 
 # Skip QA (already verified manually)
-releaseagent validate --skip-qa
+release-agent-team validate --skip-qa
 
 # Team status report format
-releaseagent validate --format team
+release-agent-team validate --format team
 
 # Combine options
-releaseagent validate --version=v1.0.0 --format team --verbose
+release-agent-team validate --version=v1.0.0 --format team --verbose
 ```
 
 ## Output Formats

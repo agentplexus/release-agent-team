@@ -16,7 +16,7 @@ This plugin automates software release workflows for multi-language repositories
 
 ## Dependencies
 
-- `releaseagent` - Release automation CLI
+- `release-agent-team` - Release automation CLI
 - `schangelog` - Changelog generation
 - `git` - Version control
 - `gh` - GitHub CLI

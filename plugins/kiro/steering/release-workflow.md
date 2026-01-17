@@ -20,7 +20,7 @@ Before starting a release:
 
 ```bash
 # Verify required tools
-which releaseagent schangelog golangci-lint
+which release-agent-team schangelog golangci-lint
 
 # Ensure clean working directory
 git status --porcelain
@@ -50,7 +50,7 @@ schangelog parse-commits --since=$(git describe --tags --abbrev=0)
 Run all validation before proceeding:
 
 ```bash
-releaseagent check --verbose
+release-agent-team check --verbose
 ```
 
 This runs:
@@ -74,10 +74,10 @@ Full release with all steps:
 
 ```bash
 # Dry run first
-releaseagent release v1.2.3 --dry-run --verbose
+release-agent-team release v1.2.3 --dry-run --verbose
 
 # Execute release
-releaseagent release v1.2.3 --verbose
+release-agent-team release v1.2.3 --verbose
 ```
 
 ## CI Verification

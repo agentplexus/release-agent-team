@@ -7,11 +7,11 @@
 // Usage:
 //
 //	releaseagent                    # Run validation checks (default)
-//	releaseagent check              # Run validation checks
-//	releaseagent check /path/to/repo
-//	releaseagent check --verbose    # Show detailed output
-//	releaseagent check --no-test    # Skip tests
-//	releaseagent version            # Show version information
+//	release-agent-team check              # Run validation checks
+//	release-agent-team check /path/to/repo
+//	release-agent-team check --verbose    # Show detailed output
+//	release-agent-team check --no-test    # Skip tests
+//	release-agent-team version            # Show version information
 //
 // Configuration:
 //

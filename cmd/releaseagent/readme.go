@@ -28,8 +28,8 @@ This command can update:
   - Coverage badges (if gocoverbadge is installed)
 
 Examples:
-  releaseagent readme --version=v0.3.0    # Update version references
-  releaseagent readme --dry-run           # Show what would change`,
+  release-agent-team readme --version=v0.3.0    # Update version references
+  release-agent-team readme --dry-run           # Show what would change`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runReadme,
 }

@@ -20,13 +20,13 @@ Release Agent validates code quality, generates changelogs, updates documentatio
 
 ```bash
 # Run validation checks
-releaseagent check
+release-agent-team check
 
 # Comprehensive Go/No-Go validation
-releaseagent validate --version=v1.0.0
+release-agent-team validate --version=v1.0.0
 
 # Execute full release workflow
-releaseagent release v1.0.0
+release-agent-team release v1.0.0
 ```
 
 ## Validation Areas

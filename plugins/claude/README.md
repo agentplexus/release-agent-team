@@ -173,7 +173,7 @@ The plugin expects these CLI tools to be installed:
 
 | Tool | Purpose |
 |------|---------|
-| `releaseagent` | Release automation CLI |
+| `release-agent-team` | Release automation CLI |
 | `schangelog` | Structured changelog generator |
 | `sroadmap` | Roadmap management |
 | `golangci-lint` | Go linter (for Go projects) |
