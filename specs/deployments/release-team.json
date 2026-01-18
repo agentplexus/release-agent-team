@@ -5,6 +5,7 @@
     {
       "name": "local-claude",
       "platform": "claude-code",
+      "mode": "single-process",
       "priority": "p1",
       "output": ".claude/agents",
       "config": {
@@ -15,6 +16,7 @@
     {
       "name": "dist-claude",
       "platform": "claude-code",
+      "mode": "single-process",
       "priority": "p1",
       "output": "plugins/claude/agents",
       "config": {
@@ -25,6 +27,7 @@
     {
       "name": "local-kiro",
       "platform": "kiro-cli",
+      "mode": "single-process",
       "priority": "p1",
       "output": "plugins/kiro/agents",
       "config": {
@@ -33,23 +36,172 @@
       }
     },
     {
-      "name": "local-agentkit",
-      "platform": "agentkit-local",
+      "name": "local-gemini",
+      "platform": "gemini-cli",
+      "mode": "single-process",
       "priority": "p2",
-      "output": "plugins/agentkit",
+      "output": "plugins/gemini",
       "config": {
-        "transport": "stdio"
+        "model": "gemini-2.0-flash",
+        "configDir": ".gemini"
+      }
+    },
+    {
+      "name": "adk-server",
+      "platform": "adk-go",
+      "mode": "distributed",
+      "priority": "p2",
+      "output": "deploy/adk",
+      "runtime": {
+        "defaults": {
+          "timeout": "5m",
+          "retry": {
+            "max_attempts": 3,
+            "backoff": "exponential",
+            "initial_delay": "1s",
+            "max_delay": "30s"
+          }
+        },
+        "steps": {
+          "qa-validation": {
+            "timeout": "10m",
+            "retry": {
+              "max_attempts": 2,
+              "retryable_errors": ["timeout", "rate_limit"]
+            },
+            "resources": {
+              "cpu": "1",
+              "memory": "1Gi"
+            }
+          },
+          "security-validation": {
+            "timeout": "10m"
+          },
+          "execute-release": {
+            "timeout": "15m",
+            "condition": "inputs.release_readiness.go == true",
+            "retry": {
+              "max_attempts": 1
+            }
+          }
+        },
+        "observability": {
+          "tracing": {
+            "enabled": true,
+            "exporter": "otlp",
+            "endpoint": "http://localhost:4317"
+          },
+          "metrics": {
+            "enabled": true,
+            "exporter": "prometheus"
+          },
+          "logging": {
+            "level": "info",
+            "format": "json"
+          }
+        }
+      },
+      "config": {
+        "model": "gemini-2.0-flash",
+        "serverPort": 8080,
+        "sessionStore": "redis"
       }
     },
     {
       "name": "aws-bedrock",
       "platform": "aws-agentcore",
+      "mode": "serverless",
       "priority": "p2",
       "output": "deploy/cdk",
+      "runtime": {
+        "defaults": {
+          "timeout": "5m",
+          "retry": {
+            "max_attempts": 3,
+            "backoff": "exponential"
+          }
+        },
+        "steps": {
+          "qa-validation": {
+            "timeout": "10m",
+            "resources": {
+              "memory": "1024Mi"
+            }
+          },
+          "execute-release": {
+            "timeout": "15m",
+            "condition": "inputs.release_readiness.go == true"
+          }
+        }
+      },
       "config": {
         "region": "us-east-1",
         "foundationModel": "anthropic.claude-3-5-sonnet-20241022-v2:0",
         "lambdaRuntime": "python3.11"
+      }
+    },
+    {
+      "name": "k8s-production",
+      "platform": "kubernetes",
+      "mode": "distributed",
+      "priority": "p3",
+      "output": "deploy/k8s",
+      "runtime": {
+        "defaults": {
+          "timeout": "5m",
+          "retry": {
+            "max_attempts": 3,
+            "backoff": "exponential",
+            "initial_delay": "2s",
+            "max_delay": "1m"
+          },
+          "resources": {
+            "cpu": "500m",
+            "memory": "512Mi"
+          }
+        },
+        "steps": {
+          "qa-validation": {
+            "timeout": "15m",
+            "concurrency": 2,
+            "resources": {
+              "cpu": "2",
+              "memory": "2Gi"
+            }
+          },
+          "security-validation": {
+            "timeout": "10m",
+            "resources": {
+              "cpu": "1",
+              "memory": "1Gi"
+            }
+          }
+        },
+        "observability": {
+          "tracing": {
+            "enabled": true,
+            "exporter": "otlp",
+            "endpoint": "http://otel-collector:4317",
+            "sample_rate": 0.1
+          },
+          "metrics": {
+            "enabled": true,
+            "exporter": "prometheus"
+          },
+          "logging": {
+            "level": "info",
+            "format": "json"
+          }
+        }
+      },
+      "config": {
+        "namespace": "release-agents",
+        "helmChart": true,
+        "imageRegistry": "ghcr.io/agentplexus",
+        "resourceLimits": {
+          "cpu": "2",
+          "memory": "4Gi"
+        }
       }
     }
   ]

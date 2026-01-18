@@ -1,7 +1,7 @@
 {
   "$schema": "https://raw.githubusercontent.com/agentplexus/multi-agent-spec/main/schema/orchestration/team.schema.json",
   "name": "release-agent-team",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A hierarchical team of agents for automating software release workflows with validation, documentation, security, and execution phases.",
   "agents": [
     "pm",
@@ -18,37 +18,182 @@
       {
         "name": "pm-validation",
         "agent": "pm",
-        "outputs": ["version-recommendation", "scope-assessment"]
+        "outputs": [
+          {
+            "name": "version_recommendation",
+            "type": "object",
+            "description": "Recommended version number and rationale"
+          },
+          {
+            "name": "scope_assessment",
+            "type": "object",
+            "description": "Release scope and roadmap alignment"
+          },
+          {
+            "name": "breaking_changes",
+            "type": "array",
+            "description": "List of breaking changes detected"
+          }
+        ]
       },
       {
         "name": "qa-validation",
         "agent": "qa",
         "depends_on": ["pm-validation"],
-        "outputs": ["qa-report"]
+        "inputs": [
+          {
+            "name": "version",
+            "type": "string",
+            "from": "pm-validation.version_recommendation",
+            "description": "Version being validated"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "build_status",
+            "type": "object",
+            "description": "Build compilation results"
+          },
+          {
+            "name": "test_results",
+            "type": "object",
+            "description": "Test execution results"
+          },
+          {
+            "name": "lint_results",
+            "type": "object",
+            "description": "Linting and static analysis results"
+          }
+        ]
       },
       {
         "name": "docs-validation",
         "agent": "documentation",
         "depends_on": ["pm-validation"],
-        "outputs": ["docs-report"]
+        "inputs": [
+          {
+            "name": "version",
+            "type": "string",
+            "from": "pm-validation.version_recommendation",
+            "description": "Version for documentation validation"
+          },
+          {
+            "name": "breaking_changes",
+            "type": "array",
+            "from": "pm-validation.breaking_changes",
+            "required": false,
+            "description": "Breaking changes to verify in docs"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "docs_status",
+            "type": "object",
+            "description": "Documentation validation results"
+          },
+          {
+            "name": "changelog_updated",
+            "type": "boolean",
+            "description": "Whether changelog has been updated"
+          }
+        ]
       },
       {
         "name": "security-validation",
         "agent": "security",
         "depends_on": ["pm-validation"],
-        "outputs": ["security-report"]
+        "outputs": [
+          {
+            "name": "vulnerability_scan",
+            "type": "object",
+            "description": "Dependency vulnerability scan results"
+          },
+          {
+            "name": "license_check",
+            "type": "object",
+            "description": "License compliance results"
+          },
+          {
+            "name": "secrets_scan",
+            "type": "object",
+            "description": "Secrets detection results"
+          }
+        ]
       },
       {
         "name": "release-validation",
         "agent": "release",
         "depends_on": ["pm-validation", "qa-validation", "docs-validation", "security-validation"],
-        "outputs": ["release-readiness", "commit-hashes", "changelog-updated"]
+        "inputs": [
+          {
+            "name": "version",
+            "type": "string",
+            "from": "pm-validation.version_recommendation",
+            "description": "Version to release"
+          },
+          {
+            "name": "test_results",
+            "type": "object",
+            "from": "qa-validation.test_results",
+            "description": "QA test results for go/no-go decision"
+          },
+          {
+            "name": "vulnerability_scan",
+            "type": "object",
+            "from": "security-validation.vulnerability_scan",
+            "description": "Security scan for go/no-go decision"
+          },
+          {
+            "name": "changelog_updated",
+            "type": "boolean",
+            "from": "docs-validation.changelog_updated",
+            "description": "Documentation readiness"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "release_readiness",
+            "type": "object",
+            "description": "Overall release readiness assessment"
+          },
+          {
+            "name": "commit_hash",
+            "type": "string",
+            "description": "Git commit hash for this release"
+          }
+        ]
       },
       {
         "name": "execute-release",
         "agent": "release-coordinator",
-        "depends_on": ["qa-validation", "docs-validation", "security-validation", "release-validation"],
-        "outputs": ["release-result"]
+        "depends_on": ["release-validation"],
+        "inputs": [
+          {
+            "name": "release_readiness",
+            "type": "object",
+            "from": "release-validation.release_readiness",
+            "description": "Release go/no-go decision"
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "from": "pm-validation.version_recommendation",
+            "description": "Version tag to create"
+          },
+          {
+            "name": "commit_hash",
+            "type": "string",
+            "from": "release-validation.commit_hash",
+            "description": "Commit to tag"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "release_result",
+            "type": "object",
+            "description": "Release execution result"
+          }
+        ]
       }
     ]
   },

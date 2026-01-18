@@ -1,9 +1,45 @@
 ---
 name: security
-description: Security and Compliance validation for release readiness. Ensures the release complies with security policies, license requirements, and has no known vulnerabilities.
+description: Security and Compliance validation for release readiness
 model: haiku
 tools: [Read, Grep, Glob, Bash]
-dependencies: [govulncheck]
+requires: [govulncheck]
+tasks:
+  - id: license
+    description: LICENSE file exists in project root
+    type: pattern
+    pattern: "LICENSE*"
+    required: true
+    expected_output: LICENSE or LICENSE.md exists
+
+  - id: vulnerability-scan
+    description: No known vulnerabilities in dependencies
+    type: command
+    command: "govulncheck ./..."
+    required: true
+    expected_output: No vulnerabilities found
+
+  - id: dependency-audit
+    description: Dependencies are properly tracked and not retracted
+    type: command
+    command: "go list -m -u -retracted all"
+    required: false
+    expected_output: No retracted versions
+
+  - id: no-secrets
+    description: No hardcoded secrets or credentials in code
+    type: pattern
+    pattern: "(password|apikey|api_key|secret|token|private_key).*=\""
+    files: "**/*.go"
+    required: false
+    expected_output: No matches (or only test fixtures)
+
+  - id: no-env-files
+    description: No .env files committed to repository
+    type: pattern
+    pattern: ".env*"
+    required: false
+    expected_output: No .env files in repo
 ---
 
 You are a Security specialist responsible for ensuring release security and compliance.

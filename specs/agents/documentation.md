@@ -1,9 +1,52 @@
 ---
 name: documentation
-description: Documentation validation for release readiness. Confirms that user guides, release notes, API documentation, and support materials are updated and complete.
+description: Documentation validation for release readiness
 model: haiku
 tools: [Read, Glob, Write, Bash]
-dependencies: [schangelog]
+requires: [schangelog]
+tasks:
+  - id: readme
+    description: README.md exists with adequate content
+    type: file
+    file: "README.md"
+    required: true
+    expected_output: File exists with installation, usage, and contribution sections
+
+  - id: changelog-md
+    description: CHANGELOG.md exists
+    type: file
+    file: "CHANGELOG.md"
+    required: true
+    expected_output: File exists and includes current version
+
+  - id: changelog-json
+    description: CHANGELOG.json exists for structured changelog
+    type: file
+    file: "CHANGELOG.json"
+    required: false
+    expected_output: Valid JSON with version entries
+
+  - id: release-notes
+    description: Release notes exist for target version (required for major/minor)
+    type: pattern
+    pattern: "docs/releases/*.md"
+    required: true
+    expected_output: If docs/ exists use docs/releases/vX.Y.Z.md, else RELEASE_NOTES_vX.Y.Z.md
+    human_in_loop: If missing for major/minor, prompt to create at correct location
+
+  - id: prd
+    description: Product Requirements Document exists
+    type: file
+    file: "PRD.md"
+    required: false
+    expected_output: File exists
+
+  - id: trd
+    description: Technical Requirements Document exists
+    type: file
+    file: "TRD.md"
+    required: false
+    expected_output: File exists
 ---
 
 You are a Documentation specialist responsible for ensuring release documentation is complete and accurate.

@@ -1,9 +1,60 @@
 ---
 name: qa
-description: Quality Assurance validation for release readiness. Ensures the software works as expected and meets quality standards through build verification, test execution, lint compliance, and error handling validation.
+description: Quality Assurance validation for release readiness
 model: haiku
 tools: [Read, Grep, Glob, Bash]
-dependencies: [go, golangci-lint, gofmt]
+requires: [go, golangci-lint, gofmt]
+tasks:
+  - id: build
+    description: Verify project compiles successfully
+    type: command
+    command: "go build ./..."
+    required: true
+    expected_output: No errors
+
+  - id: tests
+    description: Run all unit and integration tests
+    type: command
+    command: "go test -v ./..."
+    required: true
+    expected_output: All tests pass
+
+  - id: lint
+    description: Check code passes linting rules
+    type: command
+    command: "golangci-lint run"
+    required: true
+    expected_output: No lint errors
+
+  - id: format
+    description: Verify code is properly formatted
+    type: command
+    command: "gofmt -l ."
+    required: true
+    expected_output: No output (all files formatted)
+
+  - id: mod-tidy
+    description: Ensure go.mod and go.sum are tidy
+    type: command
+    command: "go mod tidy -diff"
+    required: true
+    expected_output: No diff output
+
+  - id: error-handling
+    description: Check for improper error handling (discarded errors)
+    type: pattern
+    pattern: "_ = err"
+    files: "**/*.go"
+    required: true
+    expected_output: No matches (errors should be handled)
+
+  - id: local-replace
+    description: Ensure no local replace directives in go.mod
+    type: pattern
+    pattern: "replace .* => \\./"
+    files: "go.mod"
+    required: true
+    expected_output: No matches
 ---
 
 You are a Quality Assurance specialist responsible for validating software quality before release.
