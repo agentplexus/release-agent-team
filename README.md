@@ -12,15 +12,15 @@ Release Agent Team validates code quality, generates changelogs, updates documen
 
 ## Features
 
-- **Auto-detection**: Detects Go, TypeScript, JavaScript, Python, Rust, Swift
-- **Validation checks**: Build, test, lint, format, security, documentation checks
-- **Monorepo support**: Handles repositories with multiple languages
-- **Changelog generation**: Integrates with schangelog for automated changelogs
-- **Documentation updates**: Updates README badges and version references
-- **Release workflow**: Full release lifecycle with CI verification
-- **Interactive mode**: Ask questions and propose fixes for Claude Code integration
-- **Multiple output formats**: Human-readable, JSON, and TOON (Token-Oriented Object Notation)
-- **Claude Code plugin**: Available as a plugin with commands, skills, and agents
+- 🔍 **Auto-detection**: Detects Go, TypeScript, JavaScript, Python, Rust, Swift
+- ✅ **Validation checks**: Build, test, lint, format, security, documentation checks
+- 📦 **Monorepo support**: Handles repositories with multiple languages
+- 📝 **Changelog generation**: Integrates with schangelog for automated changelogs
+- 📄 **Documentation updates**: Updates README badges and version references
+- 🚀 **Release workflow**: Full release lifecycle with CI verification
+- 💬 **Interactive mode**: Ask questions and propose fixes for Claude Code integration
+- 📊 **Multiple output formats**: Human-readable, JSON, and TOON (Token-Oriented Object Notation)
+- 🔌 **Claude Code plugin**: Available as a plugin with commands, skills, and agents
 
 ## Agent Workflow
 
