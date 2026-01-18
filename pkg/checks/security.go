@@ -172,7 +172,8 @@ func (c *SecurityChecker) checkNoSecrets(dir string) Result {
 	}
 
 	for _, pattern := range secretPatterns {
-		cmd := exec.Command("grep", "-r", "-i", "-l", "--include=*.go", pattern, ".")
+		// Exclude this file (security.go) which contains the patterns as string literals
+		cmd := exec.Command("grep", "-r", "-i", "-l", "--include=*.go", "--exclude=security.go", pattern, ".")
 		cmd.Dir = dir
 		output, err := cmd.Output()
 
