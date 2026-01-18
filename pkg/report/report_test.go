@@ -35,39 +35,39 @@ func TestStatusIcon(t *testing.T) {
 func TestTeamOverallStatus(t *testing.T) {
 	tests := []struct {
 		name   string
-		checks []multiagentspec.Check
+		tasks []multiagentspec.TaskResult
 		want   multiagentspec.Status
 	}{
 		{
 			name:   "all GO",
-			checks: []multiagentspec.Check{{Status: multiagentspec.StatusGo}, {Status: multiagentspec.StatusGo}},
+			tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusGo}, {Status: multiagentspec.StatusGo}},
 			want:   multiagentspec.StatusGo,
 		},
 		{
 			name:   "one NO-GO",
-			checks: []multiagentspec.Check{{Status: multiagentspec.StatusGo}, {Status: multiagentspec.StatusNoGo}},
+			tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusGo}, {Status: multiagentspec.StatusNoGo}},
 			want:   multiagentspec.StatusNoGo,
 		},
 		{
 			name:   "one WARN",
-			checks: []multiagentspec.Check{{Status: multiagentspec.StatusGo}, {Status: multiagentspec.StatusWarn}},
+			tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusGo}, {Status: multiagentspec.StatusWarn}},
 			want:   multiagentspec.StatusWarn,
 		},
 		{
 			name:   "all SKIP",
-			checks: []multiagentspec.Check{{Status: multiagentspec.StatusSkip}, {Status: multiagentspec.StatusSkip}},
+			tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusSkip}, {Status: multiagentspec.StatusSkip}},
 			want:   multiagentspec.StatusSkip,
 		},
 		{
 			name:   "NO-GO takes precedence over WARN",
-			checks: []multiagentspec.Check{{Status: multiagentspec.StatusWarn}, {Status: multiagentspec.StatusNoGo}},
+			tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusWarn}, {Status: multiagentspec.StatusNoGo}},
 			want:   multiagentspec.StatusNoGo,
 		},
 	}
 
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			team := multiagentspec.TeamSection{Checks: tt.checks}
+			team := multiagentspec.TeamSection{Tasks: tt.tasks}
 			if got := team.OverallStatus(); got != tt.want {
 				t.Errorf("TeamSection.OverallStatus() = %v, want %v", got, tt.want)
 			}
@@ -84,24 +84,24 @@ func TestReportIsGo(t *testing.T) {
 		{
 			name: "all teams GO",
 			teams: []multiagentspec.TeamSection{
-				{Checks: []multiagentspec.Check{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
-				{Checks: []multiagentspec.Check{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
+				{Tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
+				{Tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
 			},
 			want: true,
 		},
 		{
 			name: "one team WARN is still GO",
 			teams: []multiagentspec.TeamSection{
-				{Checks: []multiagentspec.Check{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
-				{Checks: []multiagentspec.Check{{Status: multiagentspec.StatusWarn}}, Status: multiagentspec.StatusWarn},
+				{Tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
+				{Tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusWarn}}, Status: multiagentspec.StatusWarn},
 			},
 			want: true,
 		},
 		{
 			name: "one team NO-GO",
 			teams: []multiagentspec.TeamSection{
-				{Checks: []multiagentspec.Check{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
-				{Checks: []multiagentspec.Check{{Status: multiagentspec.StatusNoGo}}, Status: multiagentspec.StatusNoGo},
+				{Tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusGo}}, Status: multiagentspec.StatusGo},
+				{Tasks: []multiagentspec.TaskResult{{Status: multiagentspec.StatusNoGo}}, Status: multiagentspec.StatusNoGo},
 			},
 			want: false,
 		},
@@ -127,7 +127,7 @@ func TestRenderer(t *testing.T) {
 			{
 				ID:   "qa-validation",
 				Name: "qa",
-				Checks: []multiagentspec.Check{
+				Tasks: []multiagentspec.TaskResult{
 					{ID: "build", Status: multiagentspec.StatusGo, Detail: ""},
 					{ID: "tests", Status: multiagentspec.StatusGo, Detail: "42 tests passed"},
 					{ID: "lint", Status: multiagentspec.StatusGo, Detail: ""},
@@ -137,7 +137,7 @@ func TestRenderer(t *testing.T) {
 			{
 				ID:   "security-validation",
 				Name: "security",
-				Checks: []multiagentspec.Check{
+				Tasks: []multiagentspec.TaskResult{
 					{ID: "license", Status: multiagentspec.StatusGo, Detail: "MIT License"},
 					{ID: "vulnerability-scan", Status: multiagentspec.StatusWarn, Detail: "1 deprecated"},
 				},
@@ -196,7 +196,7 @@ func TestRendererNoGo(t *testing.T) {
 			{
 				ID:   "qa-validation",
 				Name: "qa",
-				Checks: []multiagentspec.Check{
+				Tasks: []multiagentspec.TaskResult{
 					{ID: "build", Status: multiagentspec.StatusNoGo, Detail: "compilation failed"},
 				},
 				Status: multiagentspec.StatusNoGo,

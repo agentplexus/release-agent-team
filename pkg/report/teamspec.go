@@ -96,7 +96,7 @@ type Phase struct {
 
 // BuildReportFromSpec creates a TeamReport ensuring all steps from the spec are present.
 // Results that don't have corresponding validation data are marked as SKIP.
-func BuildReportFromSpec(spec *TeamSpec, results map[string][]multiagentspec.Check, project, version string) *multiagentspec.TeamReport {
+func BuildReportFromSpec(spec *TeamSpec, results map[string][]multiagentspec.TaskResult, project, version string) *multiagentspec.TeamReport {
 	var teams []multiagentspec.TeamSection
 
 	// Get phases for display
@@ -108,7 +108,7 @@ func BuildReportFromSpec(spec *TeamSpec, results map[string][]multiagentspec.Che
 
 	// Build teams from spec, ensuring all steps are represented
 	for _, step := range spec.GetValidationSteps() {
-		checks, hasResults := results[step.Name]
+		tasks, hasResults := results[step.Name]
 
 		team := multiagentspec.TeamSection{
 			ID:      step.Name,
@@ -117,10 +117,10 @@ func BuildReportFromSpec(spec *TeamSpec, results map[string][]multiagentspec.Che
 		}
 
 		if hasResults {
-			team.Checks = checks
+			team.Tasks = tasks
 		} else {
 			// No results - mark as pending/skipped
-			team.Checks = []multiagentspec.Check{
+			team.Tasks = []multiagentspec.TaskResult{
 				{
 					ID:     "validation",
 					Status: multiagentspec.StatusSkip,
@@ -148,20 +148,20 @@ func BuildReportFromSpec(spec *TeamSpec, results map[string][]multiagentspec.Che
 	return report
 }
 
-// StepResultMap is a helper to collect results by step name.
-type StepResultMap map[string][]multiagentspec.Check
+// StepResultMap is a helper to collect task results by step name.
+type StepResultMap map[string][]multiagentspec.TaskResult
 
 // NewStepResultMap creates a new empty step result map.
 func NewStepResultMap() StepResultMap {
 	return make(StepResultMap)
 }
 
-// Add adds checks to a step's results.
-func (m StepResultMap) Add(stepName string, checks []multiagentspec.Check) {
-	m[stepName] = checks
+// Add adds task results to a step.
+func (m StepResultMap) Add(stepName string, tasks []multiagentspec.TaskResult) {
+	m[stepName] = tasks
 }
 
-// AddCheck adds a single check to a step's results.
-func (m StepResultMap) AddCheck(stepName string, check multiagentspec.Check) {
-	m[stepName] = append(m[stepName], check)
+// AddTask adds a single task result to a step.
+func (m StepResultMap) AddTask(stepName string, task multiagentspec.TaskResult) {
+	m[stepName] = append(m[stepName], task)
 }

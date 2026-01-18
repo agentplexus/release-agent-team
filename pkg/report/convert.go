@@ -54,7 +54,7 @@ func FromValidationReport(vr *checks.ValidationReport, project, target, phase st
 			}
 		}
 
-		var teamChecks []multiagentspec.Check
+		var teamTasks []multiagentspec.TaskResult
 		for _, r := range ar.Results {
 			status := multiagentspec.StatusGo
 			if r.Skipped {
@@ -90,7 +90,7 @@ func FromValidationReport(vr *checks.ValidationReport, project, target, phase st
 				detail = r.Reason
 			}
 
-			teamChecks = append(teamChecks, multiagentspec.Check{
+			teamTasks = append(teamTasks, multiagentspec.TaskResult{
 				ID:     id,
 				Status: status,
 				Detail: detail,
@@ -102,7 +102,7 @@ func FromValidationReport(vr *checks.ValidationReport, project, target, phase st
 			Name:      config.Name,
 			AgentID:   config.Name,
 			DependsOn: config.DependsOn,
-			Checks:    teamChecks,
+			Tasks:    teamTasks,
 		}
 		team.Status = team.OverallStatus()
 		teams = append(teams, team)
@@ -125,7 +125,7 @@ func FromValidationReport(vr *checks.ValidationReport, project, target, phase st
 
 // PMTeam creates a Product Management validation team section.
 func PMTeam(version string, roadmapTotal, roadmapCompleted int, hasHighlights, hasBreaking, hasDeprecations bool) multiagentspec.TeamSection {
-	teamChecks := []multiagentspec.Check{
+	teamTasks := []multiagentspec.TaskResult{
 		{
 			ID:     "version-recommendation",
 			Status: multiagentspec.StatusGo,
@@ -162,7 +162,7 @@ func PMTeam(version string, roadmapTotal, roadmapCompleted int, hasHighlights, h
 		ID:      "pm-validation",
 		Name:    "pm",
 		AgentID: "pm",
-		Checks:  teamChecks,
+		Tasks:  teamTasks,
 	}
 	team.Status = team.OverallStatus()
 
