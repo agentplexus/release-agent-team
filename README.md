@@ -75,7 +75,8 @@ go install github.com/agentplexus/release-agent-team/cmd/releaseagent@latest
 ### Homebrew
 
 ```bash
-brew install agentplexus/tap/release-agent-team
+brew tap agentplexus/tap
+brew install release-agent-team
 ```
 
 ## Quick Start

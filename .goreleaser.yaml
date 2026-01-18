@@ -107,7 +107,8 @@ release:
     go install github.com/agentplexus/release-agent-team/cmd/releaseagent@{{ .Tag }}
 
     # Homebrew (macOS/Linux)
-    brew install agentplexus/tap/release-agent-team
+    brew tap agentplexus/tap
+    brew install release-agent-team
     ```
 
 brews:

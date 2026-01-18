@@ -15,7 +15,8 @@ This installs the `release-agent-team` binary to your `$GOPATH/bin` directory.
 On macOS and Linux, you can install via Homebrew:
 
 ```bash
-brew install agentplexus/tap/release-agent-team
+brew tap agentplexus/tap
+brew install release-agent-team
 ```
 
 ## From Source
