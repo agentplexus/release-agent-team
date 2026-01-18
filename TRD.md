@@ -1,41 +1,41 @@
-# Release Agent - Technical Requirements Document
+# Release Agent Team - Technical Requirements Document
 
 ## Architecture Overview
 
-Release Agent provides a modular architecture for release automation with validation checks, mutating actions, workflow orchestration, and multiple output formats for both CLI and AI assistant integration.
+Release Agent Team provides a modular architecture for release automation with validation checks, mutating actions, workflow orchestration, and multiple output formats for both CLI and AI assistant integration.
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                     CLI Layer (Cobra)                       │
-│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────────┐│
-│  │  check   │ │ validate │ │ release  │ │ changelog/readme ││
-│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────────┬─────────┘│
-│       └────────────┴────────────┴────────────────┘          │
-│                          │                                   │
-├──────────────────────────┼───────────────────────────────────┤
-│                    Core Layer (pkg/)                         │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐       │
-│  │    checks    │  │   actions    │  │   workflow   │       │
-│  │  - golang    │  │  - changelog │  │  - release   │       │
-│  │  - typescript│  │  - roadmap   │  │  - runner    │       │
-│  │  - security  │  │  - readme    │  │  - steps     │       │
-│  │  - docs      │  │              │  │              │       │
-│  │  - release   │  │              │  │              │       │
-│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘       │
-│         │                 │                 │                │
-│  ┌──────┴─────────────────┴─────────────────┴──────┐        │
-│  │              Supporting Packages                 │        │
-│  │  ┌────────┐ ┌────────────┐ ┌────────┐ ┌───────┐ │        │
-│  │  │ config │ │interactive │ │ output │ │  git  │ │        │
-│  │  └────────┘ └────────────┘ └────────┘ └───────┘ │        │
-│  └──────────────────────────────────────────────────┘        │
-│                          │                                   │
-├──────────────────────────┼───────────────────────────────────┤
-│                  Integration Layer                           │
-│  ┌────────┐  ┌───────────┐  ┌─────────┐  ┌────────┐         │
-│  │  Git   │  │schangelog │  │sroadmap │  │ gh CLI │         │
-│  └────────┘  └───────────┘  └─────────┘  └────────┘         │
-└─────────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+│                     CLI Layer (Cobra)                         │
+│  ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────────────┐  │
+│  │  check   │ │ validate │ │ release  │ │ changelog/readme │  │
+│  └────┬─────┘ └────┬─────┘ └────┬─────┘ └────────┬─────────┘  │
+│       └────────────┴────────────┴────────────────┘            │
+│                          │                                    │
+├──────────────────────────┼────────────────────────────────────┤
+│                    Core Layer (pkg/)                          │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐         │
+│  │    checks    │  │   actions    │  │   workflow   │         │
+│  │  - golang    │  │  - changelog │  │  - release   │         │
+│  │  - typescript│  │  - roadmap   │  │  - runner    │         │
+│  │  - security  │  │  - readme    │  │  - steps     │         │
+│  │  - docs      │  │              │  │              │         │
+│  │  - release   │  │              │  │              │         │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘         │
+│         │                 │                 │                 │
+│  ┌──────┴─────────────────┴─────────────────┴───────┐         │
+│  │              Supporting Packages                 │         │
+│  │  ┌────────┐ ┌────────────┐ ┌────────┐ ┌───────┐  │         │
+│  │  │ config │ │interactive │ │ output │ │  git  │  │         │
+│  │  └────────┘ └────────────┘ └────────┘ └───────┘  │         │
+│  └──────────────────────────────────────────────────┘         │
+│                          │                                    │
+├──────────────────────────┼────────────────────────────────────┤
+│                  Integration Layer                            │
+│  ┌────────┐  ┌───────────┐  ┌─────────┐  ┌────────┐           │
+│  │  Git   │  │schangelog │  │sroadmap │  │ gh CLI │           │
+│  └────────┘  └───────────┘  └─────────┘  └────────┘           │
+└───────────────────────────────────────────────────────────────┘
 ```
 
 ## Module Structure

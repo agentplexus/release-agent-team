@@ -1,8 +1,8 @@
-# Release Agent - Product Requirements Document
+# Release Agent Team - Product Requirements Document
 
 ## Overview
 
-Release Agent is an autonomous release preparation tool that validates code quality, generates changelogs, updates documentation, and manages the complete release lifecycle for multi-language repositories.
+Release Agent Team is an autonomous release preparation tool that validates code quality, generates changelogs, updates documentation, and manages the complete release lifecycle for multi-language repositories.
 
 ## Problem Statement
 

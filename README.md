@@ -8,7 +8,7 @@
 
 **Multi-agent release preparation team for multi-language repositories.**
 
-Release Agent validates code quality, generates changelogs, updates documentation, and manages the complete release lifecycle. It supports monorepos with multiple languages and integrates with Claude Code as an interactive subagent.
+Release Agent Team validates code quality, generates changelogs, updates documentation, and manages the complete release lifecycle. It supports monorepos with multiple languages and integrates with Claude Code as an interactive subagent.
 
 ## Features
 
