@@ -6,6 +6,31 @@
   "commit_convention": "conventional",
   "releases": [
     {
+      "version": "v0.5.0",
+      "date": "2026-01-17",
+      "highlights": [
+        { "description": "Report types now use canonical IR from multi-agent-spec SDK with JSON schema conformance" }
+      ],
+      "changed": [
+        { "description": "Report package refactored to use `multiagentspec.TeamReport`, `TeamSection`, `Check`, and `Status` types from multi-agent-spec SDK v0.1.1" },
+        { "description": "Renderer now uses `multiagentspec.NewRenderer` from multi-agent-spec SDK v0.1.1" },
+        { "description": "Reports include richer metadata: `$schema`, `generated_at`, `generated_by`, per-team `status`" },
+        { "description": "Security checker excludes itself from hardcoded secrets scan to prevent false positives" },
+        { "description": "Release-validation now depends on all validation steps (qa, docs, security) enabling commit and CHANGELOG workflow" }
+      ],
+      "removed": [
+        { "description": "`pkg/report/report.go` - Types moved to multi-agent-spec" },
+        { "description": "`pkg/report/renderer.go` - Renderer moved to multi-agent-spec" },
+        { "description": "`pkg/report/ir.go` - IR types moved to multi-agent-spec" }
+      ],
+      "dependencies": [
+        { "description": "Added `github.com/agentplexus/multi-agent-spec/sdk/go` v0.1.1 as direct dependency" }
+      ],
+      "documentation": [
+        { "description": "Added release notes for v0.5.0" }
+      ]
+    },
+    {
       "version": "v0.4.0",
       "date": "2026-01-17",
       "highlights": [
