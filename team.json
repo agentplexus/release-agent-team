@@ -41,8 +41,8 @@
       {
         "name": "release-validation",
         "agent": "release",
-        "depends_on": ["pm-validation", "qa-validation"],
-        "outputs": ["release-readiness"]
+        "depends_on": ["pm-validation", "qa-validation", "docs-validation", "security-validation"],
+        "outputs": ["release-readiness", "commit-hashes", "changelog-updated"]
       },
       {
         "name": "execute-release",
