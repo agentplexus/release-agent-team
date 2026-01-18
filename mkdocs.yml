@@ -73,6 +73,8 @@ nav:
       - version: commands/version.md
   - Configuration: configuration.md
   - Output Formats: output-formats.md
+  - Architecture:
+      - Orchestration: orchestration.md
   - Integrations:
       - Claude Code: integrations/claude-code.md
       - Git Hooks: integrations/git-hooks.md

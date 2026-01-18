@@ -1,5 +1,5 @@
 {
-  "$schema": "../multi-agent-spec/schema/deployment/deployment.schema.json",
+  "$schema": "https://raw.githubusercontent.com/agentplexus/multi-agent-spec/main/schema/deployment/deployment.schema.json",
   "team": "release-agent-team",
   "targets": [
     {
