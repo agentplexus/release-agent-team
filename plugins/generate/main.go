@@ -15,10 +15,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/agentplexus/aiassistkit/agents"
-	"github.com/agentplexus/aiassistkit/commands"
-	"github.com/agentplexus/aiassistkit/plugins"
-	"github.com/agentplexus/aiassistkit/skills"
+	"github.com/agentplexus/assistantkit/agents"
+	"github.com/agentplexus/assistantkit/commands"
+	"github.com/agentplexus/assistantkit/plugins"
+	"github.com/agentplexus/assistantkit/skills"
 )
 
 func main() {

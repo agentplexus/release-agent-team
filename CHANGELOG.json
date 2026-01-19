@@ -6,6 +6,16 @@
   "commit_convention": "conventional",
   "releases": [
     {
+      "version": "v0.5.1",
+      "date": "2026-01-18",
+      "highlights": [
+        { "description": "Dependency rename from aiassistkit to assistantkit" }
+      ],
+      "dependencies": [
+        { "description": "Renamed dependency `github.com/agentplexus/aiassistkit` v0.4.0 to `github.com/agentplexus/assistantkit` v0.5.0" }
+      ]
+    },
+    {
       "version": "v0.5.0",
       "date": "2026-01-17",
       "highlights": [
