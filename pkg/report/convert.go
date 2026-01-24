@@ -10,7 +10,7 @@ import (
 	"time"
 
 	multiagentspec "github.com/agentplexus/multi-agent-spec/sdk/go"
-	"github.com/agentplexus/release-agent-team/pkg/checks"
+	"github.com/agentplexus/agent-team-release/pkg/checks"
 )
 
 // TeamConfig maps validation areas to team IDs, names, and DAG dependencies.
@@ -116,7 +116,7 @@ func FromValidationReport(vr *checks.ValidationReport, project, target, phase st
 		Phase:       phase,
 		Teams:       teams,
 		GeneratedAt: time.Now().UTC(),
-		GeneratedBy: "release-agent-team",
+		GeneratedBy: "agent-team-release",
 	}
 	report.Status = report.ComputeOverallStatus()
 

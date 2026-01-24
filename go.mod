@@ -1,4 +1,4 @@
-module github.com/agentplexus/release-agent-team
+module github.com/agentplexus/agent-team-release
 
 go 1.24.0
 

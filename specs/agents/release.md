@@ -259,13 +259,13 @@ After all Phase 1 validations pass and fixes are committed:
 
 ```bash
 # Full release workflow
-release-agent-team release vX.Y.Z
+agent-team-release release vX.Y.Z
 
 # Dry run first
-release-agent-team release vX.Y.Z --dry-run
+agent-team-release release vX.Y.Z --dry-run
 
 # Skip CI wait (use with caution)
-release-agent-team release vX.Y.Z --skip-ci
+agent-team-release release vX.Y.Z --skip-ci
 ```
 
 ## Reporting Format

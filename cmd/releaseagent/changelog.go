@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/agentplexus/release-agent-team/pkg/actions"
+	"github.com/agentplexus/agent-team-release/pkg/actions"
 )
 
 // Changelog command flags
@@ -28,9 +28,9 @@ Requires schangelog to be installed:
   go install github.com/grokify/schangelog/cmd/schangelog@latest
 
 Examples:
-  release-agent-team changelog                    # Parse commits since latest tag
-  release-agent-team changelog --since=v0.2.0     # Parse commits since v0.2.0
-  release-agent-team changelog --dry-run          # Show what would be done`,
+  agent-team-release changelog                    # Parse commits since latest tag
+  agent-team-release changelog --since=v0.2.0     # Parse commits since v0.2.0
+  agent-team-release changelog --dry-run          # Show what would be done`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runChangelog,
 }

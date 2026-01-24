@@ -1,4 +1,4 @@
-# release-agent-team - Kiro CLI Plugin
+# agent-team-release - Kiro CLI Plugin
 
 Multi-agent team for automating software release workflows including versioning, changelog generation, CI verification, security scanning, and Git tagging
 

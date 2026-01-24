@@ -6,9 +6,9 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/agentplexus/release-agent-team/pkg/checks"
-	"github.com/agentplexus/release-agent-team/pkg/config"
-	"github.com/agentplexus/release-agent-team/pkg/detect"
+	"github.com/agentplexus/agent-team-release/pkg/checks"
+	"github.com/agentplexus/agent-team-release/pkg/config"
+	"github.com/agentplexus/agent-team-release/pkg/detect"
 )
 
 // Check command flags
@@ -30,10 +30,10 @@ Checks include build, test, lint, and format verification for each
 detected language. Results are summarized with pass/fail status.
 
 Examples:
-  release-agent-team check              # Check current directory
-  release-agent-team check /path/to/repo
-  release-agent-team check --verbose    # Show detailed output
-  release-agent-team check --no-test    # Skip tests`,
+  agent-team-release check              # Check current directory
+  agent-team-release check /path/to/repo
+  agent-team-release check --verbose    # Show detailed output
+  agent-team-release check --no-test    # Skip tests`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runCheck,
 }

@@ -8,14 +8,14 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/agentplexus/release-agent-team/plugins/kiro"
+	"github.com/agentplexus/agent-team-release/plugins/kiro"
 	"github.com/spf13/cobra"
 )
 
 const (
 	// DefaultInstallPrefix is the default prefix for installed files.
 	// This is compiled into the binary so users don't need to specify it.
-	DefaultInstallPrefix = "release-agent-team"
+	DefaultInstallPrefix = "agent-team-release"
 )
 
 var (
@@ -44,11 +44,11 @@ This installs:
   - Steering files to ~/.kiro/steering/
 
 Files are prefixed with the team name to avoid collisions when installing
-agents from multiple projects. Default prefix: release-agent-team
+agents from multiple projects. Default prefix: agent-team-release
 
 Example installed files:
-  ~/.kiro/agents/release-agent-team_pm.json
-  ~/.kiro/steering/release-agent-team_version-analysis.md
+  ~/.kiro/agents/agent-team-release_pm.json
+  ~/.kiro/steering/agent-team-release_version-analysis.md
 
 By default, shows a plan of what would be installed. Use --apply to install.`,
 	RunE: runInstallKiro,

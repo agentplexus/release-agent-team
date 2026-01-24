@@ -5,7 +5,7 @@ Show version information.
 ## Usage
 
 ```bash
-release-agent-team version
+agent-team-release version
 ```
 
 ## Description
@@ -15,23 +15,23 @@ The `version` command displays the current version of Release Agent along with b
 ## Examples
 
 ```bash
-release-agent-team version
+agent-team-release version
 ```
 
 ## Output
 
 ```
-release-agent-team version 0.3.0
+agent-team-release version 0.3.0
 ```
 
 With verbose flag:
 
 ```bash
-release-agent-team version --verbose
+agent-team-release version --verbose
 ```
 
 ```
-release-agent-team version 0.3.0
+agent-team-release version 0.3.0
   commit: abc123def
   built:  2026-01-12T10:00:00Z
   go:     go1.21.0

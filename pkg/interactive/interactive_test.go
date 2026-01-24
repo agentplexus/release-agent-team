@@ -5,7 +5,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/agentplexus/release-agent-team/pkg/actions"
+	"github.com/agentplexus/agent-team-release/pkg/actions"
 )
 
 func TestQuestionTypeString(t *testing.T) {

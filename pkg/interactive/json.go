@@ -7,7 +7,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/agentplexus/release-agent-team/pkg/actions"
+	"github.com/agentplexus/agent-team-release/pkg/actions"
 )
 
 // JSONPrompter implements Prompter with JSON input/output for Claude Code integration.

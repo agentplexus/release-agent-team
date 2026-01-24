@@ -10,9 +10,9 @@ import (
 var versionCmd = &cobra.Command{
 	Use:   "version",
 	Short: "Show version information",
-	Long:  `Display the version, commit hash, and build date of release-agent-team.`,
+	Long:  `Display the version, commit hash, and build date of agent-team-release.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("release-agent-team %s\n", version)
+		fmt.Printf("agent-team-release %s\n", version)
 		if commit != "none" {
 			fmt.Printf("  commit: %s\n", commit)
 		}

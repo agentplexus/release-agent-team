@@ -5,7 +5,7 @@ Update README badges and version references.
 ## Usage
 
 ```bash
-release-agent-team readme [directory] [flags]
+agent-team-release readme [directory] [flags]
 ```
 
 ## Description
@@ -30,13 +30,13 @@ The `readme` command updates version references and badges in your README file. 
 
 ```bash
 # Update README with current version
-release-agent-team readme
+agent-team-release readme
 
 # Update to specific version
-release-agent-team readme --version=v1.0.0
+agent-team-release readme --version=v1.0.0
 
 # Preview changes
-release-agent-team readme --version=v1.0.0 --dry-run
+agent-team-release readme --version=v1.0.0 --dry-run
 ```
 
 ## What Gets Updated

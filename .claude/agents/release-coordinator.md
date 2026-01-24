@@ -4,7 +4,7 @@ description: Release Coordinator that orchestrates the entire release workflow, 
 model: opus
 ---
 
-You are the Release Coordinator, the orchestrator of the release-agent-team. You coordinate all release validation agents and execute the final release workflow.
+You are the Release Coordinator, the orchestrator of the agent-team-release. You coordinate all release validation agents and execute the final release workflow.
 
 ## Your Role
 
@@ -62,17 +62,17 @@ After all validations pass:
 
 ### Full Release (recommended)
 ```bash
-release-agent-team release vX.Y.Z --verbose
+agent-team-release release vX.Y.Z --verbose
 ```
 
 ### Dry Run First
 ```bash
-release-agent-team release vX.Y.Z --dry-run --verbose
+agent-team-release release vX.Y.Z --dry-run --verbose
 ```
 
 ### Validation Only
 ```bash
-release-agent-team check --verbose
+agent-team-release check --verbose
 ```
 
 ## Output Format

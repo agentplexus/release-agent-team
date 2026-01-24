@@ -1,7 +1,7 @@
 {
   "ir_version": "1.0",
-  "project": "release-agent-team",
-  "repository": "https://github.com/agentplexus/release-agent-team",
+  "project": "agent-team-release",
+  "repository": "https://github.com/agentplexus/agent-team-release",
   "versioning": "semver",
   "commit_convention": "conventional",
   "releases": [
@@ -92,7 +92,7 @@
       "date": "2026-01-17",
       "highlights": [
         { "description": "Multi-agent team architecture with 6 specialized agents (PM, QA, Documentation, Security, Release, Coordinator) and DAG workflow orchestration" },
-        { "description": "Repository moved to github.com/agentplexus/release-agent-team with renamed binary `release-agent-team`" }
+        { "description": "Repository moved to github.com/agentplexus/agent-team-release with renamed binary `agent-team-release`" }
       ],
       "added": [
         { "description": "Multi-agent team spec with `team.json` defining 6 agents and DAG workflow", "commit": "8268317" },
@@ -103,15 +103,15 @@
         { "description": "Gemini CLI extension documentation", "commit": "aec71a2" }
       ],
       "changed": [
-        { "description": "Module path from `github.com/grokify/release-agent` to `github.com/agentplexus/release-agent-team`", "breaking": true, "commit": "9b1503b" },
-        { "description": "Binary name from `releaseagent` to `release-agent-team`", "breaking": true, "commit": "1b5789f" },
-        { "description": "Homebrew formula from `grokify/tap/releaseagent` to `agentplexus/tap/release-agent-team`", "breaking": true, "commit": "1b5789f" },
-        { "description": "Claude Code plugin name from `release-agent` to `release-agent-team`", "commit": "c043b97" },
-        { "description": "Plugin install command to `claude plugin add github:agentplexus/release-agent-team/plugins/claude`", "commit": "c043b97" }
+        { "description": "Module path from `github.com/grokify/release-agent` to `github.com/agentplexus/agent-team-release`", "breaking": true, "commit": "9b1503b" },
+        { "description": "Binary name from `releaseagent` to `agent-team-release`", "breaking": true, "commit": "1b5789f" },
+        { "description": "Homebrew formula from `grokify/tap/releaseagent` to `agentplexus/tap/agent-team-release`", "breaking": true, "commit": "1b5789f" },
+        { "description": "Claude Code plugin name from `release-agent` to `agent-team-release`", "commit": "c043b97" },
+        { "description": "Plugin install command to `claude plugin add github:agentplexus/agent-team-release/plugins/claude`", "commit": "c043b97" }
       ],
       "documentation": [
         { "description": "Updated README with multi-agent team branding and new installation commands", "commit": "aec71a2" },
-        { "description": "Updated all command examples to use `release-agent-team` binary", "commit": "1b5789f" },
+        { "description": "Updated all command examples to use `agent-team-release` binary", "commit": "1b5789f" },
         { "description": "Updated GoReleaser configuration for new binary and Homebrew tap", "commit": "1b5789f" },
         { "description": "Updated MkDocs configuration for agentplexus organization", "commit": "aec71a2" }
       ]

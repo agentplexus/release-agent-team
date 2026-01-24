@@ -6,7 +6,7 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/agentplexus/release-agent-team/pkg/actions"
+	"github.com/agentplexus/agent-team-release/pkg/actions"
 )
 
 // Roadmap command flags
@@ -27,8 +27,8 @@ Requires sroadmap to be installed:
   go install github.com/grokify/sroadmap/cmd/sroadmap@latest
 
 Examples:
-  release-agent-team roadmap              # Regenerate ROADMAP.md
-  release-agent-team roadmap --dry-run    # Show stats without generating`,
+  agent-team-release roadmap              # Regenerate ROADMAP.md
+  agent-team-release roadmap --dry-run    # Show stats without generating`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runRoadmap,
 }

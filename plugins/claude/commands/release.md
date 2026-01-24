@@ -30,7 +30,7 @@ Execute full release workflow for the specified version
 
 ## Dependencies
 
-- `release-agent-team`
+- `agent-team-release`
 - `schangelog`
 - `git`
 

@@ -35,7 +35,7 @@ Shows pass/fail status for each check with detailed output for failures.
 ## Example
 
 ```bash
-release-agent-team check --verbose
+agent-team-release check --verbose
 ```
 
 Output:

@@ -7,13 +7,13 @@ A multi-agent team plugin for Claude Code that automates software release workfl
 ### From GitHub (Recommended)
 
 ```bash
-claude plugin add github:agentplexus/release-agent-team/plugins/claude
+claude plugin add github:agentplexus/agent-team-release/plugins/claude
 ```
 
 ### From Local Path
 
 ```bash
-claude plugin add /path/to/release-agent-team/plugins/claude
+claude plugin add /path/to/agent-team-release/plugins/claude
 ```
 
 ### Manual Installation
@@ -21,8 +21,8 @@ claude plugin add /path/to/release-agent-team/plugins/claude
 Download and copy to your project:
 
 ```bash
-curl -sL https://github.com/agentplexus/release-agent-team/archive/main.tar.gz | tar -xz
-cp -r release-agent-team-main/plugins/claude your-project/plugins/
+curl -sL https://github.com/agentplexus/agent-team-release/archive/main.tar.gz | tar -xz
+cp -r agent-team-release-main/plugins/claude your-project/plugins/
 ```
 
 ## Team Agents
@@ -58,10 +58,10 @@ After installation, use the release commands:
 claude
 
 # Use release commands
-> /release-agent-team:release v1.2.3
-> /release-agent-team:check
-> /release-agent-team:changelog v1.2.3
-> /release-agent-team:version-next
+> /agent-team-release:release v1.2.3
+> /agent-team-release:check
+> /agent-team-release:changelog v1.2.3
+> /agent-team-release:version-next
 ```
 
 Or invoke agents directly:
@@ -76,10 +76,10 @@ Use the security agent to check for vulnerabilities
 
 | Command | Description |
 |---------|-------------|
-| `/release-agent-team:release <version>` | Execute full release workflow |
-| `/release-agent-team:check` | Run validation checks (build, test, lint) |
-| `/release-agent-team:changelog <version>` | Generate changelog for version |
-| `/release-agent-team:version-next` | Suggest next semantic version |
+| `/agent-team-release:release <version>` | Execute full release workflow |
+| `/agent-team-release:check` | Run validation checks (build, test, lint) |
+| `/agent-team-release:changelog <version>` | Generate changelog for version |
+| `/agent-team-release:version-next` | Suggest next semantic version |
 
 ## Plugin Structure
 
@@ -173,7 +173,7 @@ The plugin expects these CLI tools to be installed:
 
 | Tool | Purpose |
 |------|---------|
-| `release-agent-team` | Release automation CLI |
+| `agent-team-release` | Release automation CLI |
 | `schangelog` | Structured changelog generator |
 | `sroadmap` | Roadmap management |
 | `golangci-lint` | Go linter (for Go projects) |
@@ -194,13 +194,13 @@ The plugin expects these CLI tools to be installed:
 
 ```bash
 # Check project is ready
-/release-agent-team:check
+/agent-team-release:check
 
 # Get suggested version
-/release-agent-team:version-next
+/agent-team-release:version-next
 
 # Execute release
-/release-agent-team:release v1.2.0
+/agent-team-release:release v1.2.0
 ```
 
 ### Full Team Review

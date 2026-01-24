@@ -5,10 +5,10 @@
 The easiest way to install Release Agent Team is using `go install`:
 
 ```bash
-go install github.com/agentplexus/release-agent-team/cmd/releaseagent@latest
+go install github.com/agentplexus/agent-team-release/cmd/releaseagent@latest
 ```
 
-This installs the `release-agent-team` binary to your `$GOPATH/bin` directory.
+This installs the `agent-team-release` binary to your `$GOPATH/bin` directory.
 
 ## Homebrew
 
@@ -16,7 +16,7 @@ On macOS and Linux, you can install via Homebrew:
 
 ```bash
 brew tap agentplexus/tap
-brew install release-agent-team
+brew install agent-team-release
 ```
 
 ## From Source
@@ -24,9 +24,9 @@ brew install release-agent-team
 Clone the repository and build:
 
 ```bash
-git clone https://github.com/agentplexus/release-agent-team.git
-cd release-agent-team
-go build -o release-agent-team ./cmd/releaseagent
+git clone https://github.com/agentplexus/agent-team-release.git
+cd agent-team-release
+go build -o agent-team-release ./cmd/releaseagent
 ```
 
 ## Verify Installation
@@ -34,7 +34,7 @@ go build -o release-agent-team ./cmd/releaseagent
 Check that Release Agent is installed correctly:
 
 ```bash
-release-agent-team version
+agent-team-release version
 ```
 
 ## Dependencies

@@ -1,7 +1,7 @@
      ╔════════════════════════════════════════════════════════════════════════════╗
      ║                             TEAM STATUS REPORT                             ║
      ╠════════════════════════════════════════════════════════════════════════════╣
-     ║ Project: github.com/agentplexus/release-agent-team                         ║
+     ║ Project: github.com/agentplexus/agent-team-release                         ║
      ║ Target:  v0.5.0                                                            ║
      ╠════════════════════════════════════════════════════════════════════════════╣
      ║ PHASE 1: REVIEW                                                            ║

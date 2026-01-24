@@ -22,7 +22,7 @@ prepush
 # OS
 .DS_Store
 Thumbs.db
-release-agent-team
+agent-team-release
 
 # Built documentation (use gh-pages branch)
 site/

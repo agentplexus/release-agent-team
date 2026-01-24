@@ -6,8 +6,8 @@ import (
 	"io"
 	"os"
 
-	"github.com/agentplexus/release-agent-team/pkg/actions"
-	"github.com/agentplexus/release-agent-team/pkg/interactive"
+	"github.com/agentplexus/agent-team-release/pkg/actions"
+	"github.com/agentplexus/agent-team-release/pkg/interactive"
 )
 
 // MessageType defines the type of JSON message.

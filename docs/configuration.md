@@ -128,7 +128,7 @@ Command-line flags override configuration file settings:
 
 ```bash
 # Config says test: true, but skip tests for this run
-release-agent-team check --no-test
+agent-team-release check --no-test
 ```
 
 ## Legacy Configuration
@@ -144,7 +144,7 @@ mv .prepush.yaml .releaseagent.yaml
 To validate your configuration:
 
 ```bash
-release-agent-team check --verbose
+agent-team-release check --verbose
 ```
 
 The verbose output shows which configuration options are being used.

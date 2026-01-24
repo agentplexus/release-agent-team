@@ -8,7 +8,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/toon-format/toon-go"
 
-	"github.com/agentplexus/release-agent-team/pkg/workflow"
+	"github.com/agentplexus/agent-team-release/pkg/workflow"
 )
 
 // Release command flags
@@ -36,10 +36,10 @@ The release workflow includes:
   9. Create and push release tag
 
 Examples:
-  release-agent-team release v0.3.0
-  release-agent-team release v0.3.0 --dry-run     # Preview without changes
-  release-agent-team release v0.3.0 --skip-ci     # Don't wait for CI
-  release-agent-team release v0.3.0 --skip-checks # Skip validation`,
+  agent-team-release release v0.3.0
+  agent-team-release release v0.3.0 --dry-run     # Preview without changes
+  agent-team-release release v0.3.0 --skip-ci     # Don't wait for CI
+  agent-team-release release v0.3.0 --skip-checks # Skip validation`,
 	Args: cobra.ExactArgs(1),
 	Run:  runRelease,
 }

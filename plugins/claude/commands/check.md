@@ -17,7 +17,7 @@ Run validation checks on the current repository
 
 ## Dependencies
 
-- `release-agent-team`
+- `agent-team-release`
 
 ## Instructions
 

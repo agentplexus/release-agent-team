@@ -5,7 +5,7 @@ Update roadmap using sroadmap.
 ## Usage
 
 ```bash
-release-agent-team roadmap [directory] [flags]
+agent-team-release roadmap [directory] [flags]
 ```
 
 ## Description
@@ -37,13 +37,13 @@ go install github.com/grokify/structured-roadmap/cmd/sroadmap@latest
 
 ```bash
 # Update roadmap
-release-agent-team roadmap
+agent-team-release roadmap
 
 # Preview without writing
-release-agent-team roadmap --dry-run
+agent-team-release roadmap --dry-run
 
 # Verbose output
-release-agent-team roadmap --verbose
+agent-team-release roadmap --verbose
 ```
 
 ## Input/Output Files

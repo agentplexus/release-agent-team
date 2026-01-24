@@ -1,10 +1,10 @@
 {
-  "name": "release-agent-team",
+  "name": "agent-team-release",
   "version": "1.0.0",
   "description": "Multi-agent team for automating software release workflows including versioning, changelog generation, CI verification, security scanning, and Git tagging",
   "author": "agentplexus",
   "license": "Apache-2.0",
-  "repository": "https://github.com/agentplexus/release-agent-team",
-  "homepage": "https://github.com/agentplexus/release-agent-team",
+  "repository": "https://github.com/agentplexus/agent-team-release",
+  "homepage": "https://github.com/agentplexus/agent-team-release",
   "contextFileName": "GEMINI.md"
 }

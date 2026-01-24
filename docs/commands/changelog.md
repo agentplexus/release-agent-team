@@ -5,7 +5,7 @@ Generate or update changelog using schangelog.
 ## Usage
 
 ```bash
-release-agent-team changelog [directory] [flags]
+agent-team-release changelog [directory] [flags]
 ```
 
 ## Description
@@ -38,16 +38,16 @@ go install github.com/grokify/structured-changelog/cmd/schangelog@latest
 
 ```bash
 # Generate changelog for all commits
-release-agent-team changelog
+agent-team-release changelog
 
 # Generate since a specific version
-release-agent-team changelog --since=v0.9.0
+agent-team-release changelog --since=v0.9.0
 
 # Preview without writing
-release-agent-team changelog --dry-run
+agent-team-release changelog --dry-run
 
 # Verbose output
-release-agent-team changelog --since=v0.9.0 --verbose
+agent-team-release changelog --since=v0.9.0 --verbose
 ```
 
 ## Output Files

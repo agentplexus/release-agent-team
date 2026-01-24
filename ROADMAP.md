@@ -62,7 +62,7 @@ Incorporate feedback from real-world usage before v1.0
 
 ### [x] Rename repository to release-agent
 
-Update module path to github.com/agentplexus/release-agent-team
+Update module path to github.com/agentplexus/agent-team-release
 
 **Version:** 0.2.0
 
@@ -84,13 +84,13 @@ Create and push release tags
 
 **Version:** 0.3.0
 
-### [x] `release-agent-team check` subcommand
+### [x] `agent-team-release check` subcommand
 
 Move validation to check subcommand
 
 **Version:** 0.3.0
 
-### [x] `release-agent-team validate` subcommand
+### [x] `agent-team-release validate` subcommand
 
 Comprehensive Go/No-Go validation across 4 areas
 
@@ -170,7 +170,7 @@ pkg/workflow with Workflow/Runner for multi-step releases
 
 **Version:** 0.3.0
 
-### [x] `release-agent-team release` command
+### [x] `agent-team-release release` command
 
 Full release workflow with version argument
 
@@ -248,7 +248,7 @@ Verify schangelog, sroadmap, golangci-lint installed
 
 ### [x] Claude Code plugin via GitHub
 
-Install directly from GitHub: `claude plugin add github:agentplexus/release-agent-team/plugins/claude`
+Install directly from GitHub: `claude plugin add github:agentplexus/agent-team-release/plugins/claude`
 
 **Version:** 0.4.0
 

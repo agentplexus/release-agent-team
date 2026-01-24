@@ -93,7 +93,7 @@ As a developer, I want a single command to handle the entire release so that I d
 
 **Acceptance Criteria:**
 
-- `release-agent-team release v1.2.0` runs complete workflow
+- `agent-team-release release v1.2.0` runs complete workflow
 - Validates all checks pass before proceeding
 - Generates changelog for the release
 - Creates release commit with proper message
@@ -112,7 +112,7 @@ As a Claude Code user, I want to invoke release-agent via `/release-agent` so th
 - Subagent can ask user questions during execution
 - Proper permission handling for file edits
 - Clear summary of actions taken
-- Install via GitHub: `claude plugin add github:agentplexus/release-agent-team/plugins/claude`
+- Install via GitHub: `claude plugin add github:agentplexus/agent-team-release/plugins/claude`
 
 **Note:** Currently available as a custom plugin installed from GitHub. Official Claude Marketplace publication is planned for future release.
 
@@ -155,8 +155,8 @@ As a platform operator, I want agents defined in a portable specification so tha
 | TypeScript/JavaScript checks | P0 | Complete |
 | Configuration file support | P0 | Complete |
 | Adopt cobra for CLI | P0 | Complete |
-| `release-agent-team check` subcommand | P0 | Complete |
-| `release-agent-team version` subcommand | P0 | Complete |
+| `agent-team-release check` subcommand | P0 | Complete |
+| `agent-team-release version` subcommand | P0 | Complete |
 
 ### Phase 2: Actions
 
@@ -167,16 +167,16 @@ As a platform operator, I want agents defined in a portable specification so tha
 | sroadmap integration | P1 | Complete |
 | Coverage badge updates | P1 | Complete |
 | README version updates | P1 | Complete |
-| `release-agent-team changelog` command | P0 | Complete |
-| `release-agent-team readme` command | P1 | Complete |
-| `release-agent-team roadmap` command | P1 | Complete |
+| `agent-team-release changelog` command | P0 | Complete |
+| `agent-team-release readme` command | P1 | Complete |
+| `agent-team-release roadmap` command | P1 | Complete |
 
 ### Phase 3: Release Workflow
 
 | Feature | Priority | Status |
 |---------|----------|--------|
 | Workflow engine | P0 | Complete |
-| `release-agent-team release` command | P0 | Complete |
+| `agent-team-release release` command | P0 | Complete |
 | CI status checking | P1 | Complete |
 | Tag creation | P0 | Complete |
 | Git wrapper package | P0 | Complete |
@@ -302,33 +302,33 @@ release:
 
 ```bash
 # Validation
-release-agent-team check [directory]
-release-agent-team check --no-test --no-lint
-release-agent-team check --go-no-go
-release-agent-team validate --version=v1.0.0
-release-agent-team validate --skip-qa --skip-docs --skip-security
-release-agent-team validate --format team  # Team status report
+agent-team-release check [directory]
+agent-team-release check --no-test --no-lint
+agent-team-release check --go-no-go
+agent-team-release validate --version=v1.0.0
+agent-team-release validate --skip-qa --skip-docs --skip-security
+agent-team-release validate --format team  # Team status report
 
 # Actions
-release-agent-team changelog [--since=v1.0.0]
-release-agent-team readme [--version=v1.1.0]
-release-agent-team roadmap
+agent-team-release changelog [--since=v1.0.0]
+agent-team-release readme [--version=v1.1.0]
+agent-team-release roadmap
 
 # Release workflow
-release-agent-team release v1.1.0
-release-agent-team release v1.1.0 --skip-ci
-release-agent-team release v1.1.0 --dry-run
+agent-team-release release v1.1.0
+agent-team-release release v1.1.0 --skip-ci
+agent-team-release release v1.1.0 --dry-run
 
 # Interactive mode (for Claude Code)
-release-agent-team check --interactive
-release-agent-team release v1.1.0 --interactive
+agent-team-release check --interactive
+agent-team-release release v1.1.0 --interactive
 
 # Output formats
-release-agent-team check --json --format=toon
-release-agent-team release v1.1.0 --json --format=json
+agent-team-release check --json --format=toon
+agent-team-release release v1.1.0 --json --format=json
 
 # Version
-release-agent-team version
+agent-team-release version
 ```
 
 ### Validation Areas

@@ -1,7 +1,7 @@
 {
   "ir_version": "1.0",
   "project": "Release Agent Team",
-  "repository": "https://github.com/agentplexus/release-agent-team",
+  "repository": "https://github.com/agentplexus/agent-team-release",
 
   "legend": {
     "completed": {"emoji": "✅", "description": "Completed"},
@@ -142,7 +142,7 @@
     {
       "id": "rename-repo",
       "title": "Rename repository to release-agent",
-      "description": "Update module path to github.com/agentplexus/release-agent-team",
+      "description": "Update module path to github.com/agentplexus/agent-team-release",
       "status": "completed",
       "version": "0.2.0",
       "phase": "v0.2",
@@ -185,7 +185,7 @@
     },
     {
       "id": "check-subcommand",
-      "title": "`release-agent-team check` subcommand",
+      "title": "`agent-team-release check` subcommand",
       "description": "Move validation to check subcommand",
       "status": "completed",
       "version": "0.3.0",
@@ -196,7 +196,7 @@
     },
     {
       "id": "validate-subcommand",
-      "title": "`release-agent-team validate` subcommand",
+      "title": "`agent-team-release validate` subcommand",
       "description": "Comprehensive Go/No-Go validation across 4 areas",
       "status": "completed",
       "version": "0.3.0",
@@ -306,7 +306,7 @@
     },
     {
       "id": "release-command",
-      "title": "`release-agent-team release` command",
+      "title": "`agent-team-release release` command",
       "description": "Full release workflow with version argument",
       "status": "completed",
       "version": "0.3.0",
@@ -516,7 +516,7 @@
     {
       "id": "claude-plugin-github",
       "title": "Claude Code plugin via GitHub",
-      "description": "Install directly from GitHub: `claude plugin add github:agentplexus/release-agent-team/plugins/claude`",
+      "description": "Install directly from GitHub: `claude plugin add github:agentplexus/agent-team-release/plugins/claude`",
       "status": "completed",
       "version": "0.4.0",
       "phase": "v0.4",

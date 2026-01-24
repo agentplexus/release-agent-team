@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/agentplexus/multi-agent-spec/main/schema/deployment/deployment.schema.json",
-  "team": "release-agent-team",
+  "team": "agent-team-release",
   "targets": [
     {
       "name": "local-claude",

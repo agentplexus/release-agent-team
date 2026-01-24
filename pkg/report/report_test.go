@@ -119,7 +119,7 @@ func TestReportIsGo(t *testing.T) {
 
 func TestRenderer(t *testing.T) {
 	report := &multiagentspec.TeamReport{
-		Project: "github.com/agentplexus/release-agent-team",
+		Project: "github.com/agentplexus/agent-team-release",
 		Version: "v0.3.0",
 		Target:  "v0.3.0 (release automation)",
 		Phase:   "PHASE 1: REVIEW",
@@ -159,7 +159,7 @@ func TestRenderer(t *testing.T) {
 	// Check for expected content
 	expectedContent := []string{
 		"TEAM STATUS REPORT",
-		"github.com/agentplexus/release-agent-team",
+		"github.com/agentplexus/agent-team-release",
 		"v0.3.0 (release automation)",
 		"PHASE 1: REVIEW",
 		"qa-validation (qa)",

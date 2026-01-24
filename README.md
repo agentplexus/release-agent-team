@@ -69,80 +69,80 @@ The workflow ensures:
 ## Installation
 
 ```bash
-go install github.com/agentplexus/release-agent-team/cmd/releaseagent@latest
+go install github.com/agentplexus/agent-team-release/cmd/releaseagent@latest
 ```
 
 ### Homebrew
 
 ```bash
 brew tap agentplexus/tap
-brew install release-agent-team
+brew install agent-team-release
 ```
 
 ## Quick Start
 
 ```bash
 # Run validation checks in current directory
-release-agent-team check
+agent-team-release check
 
 # Run comprehensive validation with Go/No-Go report
-release-agent-team validate --version=v1.0.0
+agent-team-release validate --version=v1.0.0
 
 # Execute full release workflow
-release-agent-team release v1.0.0
+agent-team-release release v1.0.0
 
 # Generate changelog
-release-agent-team changelog --since=v0.9.0
+agent-team-release changelog --since=v0.9.0
 
 # Show version
-release-agent-team version
+agent-team-release version
 ```
 
 ## Commands
 
-### `release-agent-team check`
+### `agent-team-release check`
 
 Run validation checks for all detected languages.
 
 ```bash
-release-agent-team check [directory]
+agent-team-release check [directory]
 
 # With options
-release-agent-team check --verbose
-release-agent-team check --no-test --no-lint
-release-agent-team check --coverage
-release-agent-team check --go-no-go  # NASA-style Go/No-Go report
+agent-team-release check --verbose
+agent-team-release check --no-test --no-lint
+agent-team-release check --coverage
+agent-team-release check --go-no-go  # NASA-style Go/No-Go report
 ```
 
-### `release-agent-team validate`
+### `agent-team-release validate`
 
 Run comprehensive validation across all areas (QA, Documentation, Release, Security).
 
 ```bash
-release-agent-team validate [directory]
+agent-team-release validate [directory]
 
 # With version-specific checks
-release-agent-team validate --version=v1.0.0
+agent-team-release validate --version=v1.0.0
 
 # Skip specific areas
-release-agent-team validate --skip-qa --skip-docs --skip-security
+agent-team-release validate --skip-qa --skip-docs --skip-security
 
 # Team status report format (template-based)
-release-agent-team validate --format team
+agent-team-release validate --format team
 ```
 
-### `release-agent-team release`
+### `agent-team-release release`
 
 Execute the full release workflow.
 
 ```bash
-release-agent-team release <version>
+agent-team-release release <version>
 
 # Examples
-release-agent-team release v1.0.0
-release-agent-team release v1.0.0 --dry-run      # Preview without changes
-release-agent-team release v1.0.0 --skip-ci      # Don't wait for CI
-release-agent-team release v1.0.0 --verbose
+agent-team-release release v1.0.0
+agent-team-release release v1.0.0 --dry-run      # Preview without changes
+agent-team-release release v1.0.0 --skip-ci      # Don't wait for CI
+agent-team-release release v1.0.0 --verbose
 ```
 
 **Release workflow steps:**
@@ -157,41 +157,41 @@ release-agent-team release v1.0.0 --verbose
 8. Wait for CI to pass
 9. Create and push release tag
 
-### `release-agent-team changelog`
+### `agent-team-release changelog`
 
 Generate or update changelog using schangelog.
 
 ```bash
-release-agent-team changelog [directory]
-release-agent-team changelog --since=v0.9.0
-release-agent-team changelog --dry-run
+agent-team-release changelog [directory]
+agent-team-release changelog --since=v0.9.0
+agent-team-release changelog --dry-run
 ```
 
-### `release-agent-team readme`
+### `agent-team-release readme`
 
 Update README badges and version references.
 
 ```bash
-release-agent-team readme [directory]
-release-agent-team readme --version=v1.0.0
-release-agent-team readme --dry-run
+agent-team-release readme [directory]
+agent-team-release readme --version=v1.0.0
+agent-team-release readme --dry-run
 ```
 
-### `release-agent-team roadmap`
+### `agent-team-release roadmap`
 
 Update roadmap using sroadmap.
 
 ```bash
-release-agent-team roadmap [directory]
-release-agent-team roadmap --dry-run
+agent-team-release roadmap [directory]
+agent-team-release roadmap --dry-run
 ```
 
-### `release-agent-team version`
+### `agent-team-release version`
 
 Show version information.
 
 ```bash
-release-agent-team version
+agent-team-release version
 ```
 
 ## Global Flags
@@ -281,13 +281,13 @@ languages:
 
 ## Git Hook Integration
 
-To run release-agent-team automatically before every `git push`:
+To run agent-team-release automatically before every `git push`:
 
 ```bash
 # Create the hook
 cat > .git/hooks/pre-push << 'EOF'
 #!/bin/bash
-exec release-agent-team check
+exec agent-team-release check
 EOF
 
 # Make it executable
@@ -332,7 +332,7 @@ Structured box report with per-team validation results:
 ╔════════════════════════════════════════════════════════════════════════════╗
 ║                             TEAM STATUS REPORT                             ║
 ╠════════════════════════════════════════════════════════════════════════════╣
-║ Project: github.com/agentplexus/release-agent-team                         ║
+║ Project: github.com/agentplexus/agent-team-release                         ║
 ║ Target:  v0.3.0                                                            ║
 ╠════════════════════════════════════════════════════════════════════════════╣
 ║ RELEASE VALIDATION                                                         ║
@@ -355,7 +355,7 @@ Structured box report with per-team validation results:
 Install as a Claude Code plugin for interactive release automation:
 
 ```bash
-claude plugin add github:agentplexus/release-agent-team/plugins/claude
+claude plugin add github:agentplexus/agent-team-release/plugins/claude
 ```
 
 The plugin includes:
@@ -375,8 +375,8 @@ Use `--interactive` flag to enable Q&A mode where Release Agent can:
 - Get user approval before making changes
 
 ```bash
-release-agent-team check --interactive
-release-agent-team release v1.0.0 --interactive
+agent-team-release check --interactive
+agent-team-release release v1.0.0 --interactive
 ```
 
 ## Examples
@@ -384,7 +384,7 @@ release-agent-team release v1.0.0 --interactive
 ### Go Project
 
 ```
-$ release-agent-team check
+$ agent-team-release check
 === Pre-push Checks ===
 
 Detecting languages...
@@ -409,7 +409,7 @@ All pre-push checks passed!
 ### Comprehensive Validation
 
 ```
-$ release-agent-team validate --version=v1.0.0
+$ agent-team-release validate --version=v1.0.0
 
 === Release Validation: v1.0.0 ===
 
@@ -428,7 +428,7 @@ $ release-agent-team validate --version=v1.0.0
 ### Full Release
 
 ```
-$ release-agent-team release v1.0.0 --verbose
+$ agent-team-release release v1.0.0 --verbose
 
 [1/9] Validating version...
       ✓ Version v1.0.0 is valid and available
@@ -505,13 +505,13 @@ Release v1.0.0 complete!
 
 MIT License - see [LICENSE](LICENSE) for details.
 
- [build-status-svg]: https://github.com/agentplexus/release-agent-team/actions/workflows/ci.yaml/badge.svg?branch=main
- [build-status-url]: https://github.com/agentplexus/release-agent-team/actions/workflows/ci.yaml
- [lint-status-svg]: https://github.com/agentplexus/release-agent-team/actions/workflows/lint.yaml/badge.svg?branch=main
- [lint-status-url]: https://github.com/agentplexus/release-agent-team/actions/workflows/lint.yaml
- [goreport-svg]: https://goreportcard.com/badge/github.com/agentplexus/release-agent-team
- [goreport-url]: https://goreportcard.com/report/github.com/agentplexus/release-agent-team
- [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/agentplexus/release-agent-team
- [docs-godoc-url]: https://pkg.go.dev/github.com/agentplexus/release-agent-team
+ [build-status-svg]: https://github.com/agentplexus/agent-team-release/actions/workflows/ci.yaml/badge.svg?branch=main
+ [build-status-url]: https://github.com/agentplexus/agent-team-release/actions/workflows/ci.yaml
+ [lint-status-svg]: https://github.com/agentplexus/agent-team-release/actions/workflows/lint.yaml/badge.svg?branch=main
+ [lint-status-url]: https://github.com/agentplexus/agent-team-release/actions/workflows/lint.yaml
+ [goreport-svg]: https://goreportcard.com/badge/github.com/agentplexus/agent-team-release
+ [goreport-url]: https://goreportcard.com/report/github.com/agentplexus/agent-team-release
+ [docs-godoc-svg]: https://pkg.go.dev/badge/github.com/agentplexus/agent-team-release
+ [docs-godoc-url]: https://pkg.go.dev/github.com/agentplexus/agent-team-release
  [license-svg]: https://img.shields.io/badge/license-MIT-blue.svg
- [license-url]: https://github.com/agentplexus/release-agent-team/blob/master/LICENSE
+ [license-url]: https://github.com/agentplexus/agent-team-release/blob/master/LICENSE

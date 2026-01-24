@@ -23,16 +23,16 @@
     "Wait for CI to pass",
     "Create and push release tag"
   ],
-  "dependencies": ["release-agent-team", "schangelog", "git"],
+  "dependencies": ["agent-team-release", "schangelog", "git"],
   "examples": [
     {
       "description": "Create a release",
       "input": "/release-agent:release v0.9.0",
-      "output": "Executes: release-agent-team release v0.9.0 --verbose"
+      "output": "Executes: agent-team-release release v0.9.0 --verbose"
     },
     {
       "description": "Dry run",
-      "input": "release-agent-team release v1.0.0 --dry-run",
+      "input": "agent-team-release release v1.0.0 --dry-run",
       "output": "Preview changes without executing"
     }
   ]

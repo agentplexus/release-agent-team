@@ -6,8 +6,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/agentplexus/release-agent-team/pkg/actions"
-	"github.com/agentplexus/release-agent-team/pkg/config"
+	"github.com/agentplexus/agent-team-release/pkg/actions"
+	"github.com/agentplexus/agent-team-release/pkg/config"
 )
 
 // Readme command flags
@@ -28,8 +28,8 @@ This command can update:
   - Coverage badges (if gocoverbadge is installed)
 
 Examples:
-  release-agent-team readme --version=v0.3.0    # Update version references
-  release-agent-team readme --dry-run           # Show what would change`,
+  agent-team-release readme --version=v0.3.0    # Update version references
+  agent-team-release readme --dry-run           # Show what would change`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runReadme,
 }

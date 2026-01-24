@@ -28,21 +28,21 @@ Execute the complete release workflow for the specified version.
 
 For dry-run (preview without changes):
 ```bash
-release-agent-team release $ARGUMENTS --dry-run
+agent-team-release release $ARGUMENTS --dry-run
 ```
 
 For interactive mode (approve each step):
 ```bash
-release-agent-team release $ARGUMENTS --interactive
+agent-team-release release $ARGUMENTS --interactive
 ```
 
 For JSON/TOON output:
 ```bash
-release-agent-team release $ARGUMENTS --json
+agent-team-release release $ARGUMENTS --json
 ```
 
 ## Example
 
 User: `/release-agent:release v0.9.0`
 
-This will execute: `release-agent-team release v0.9.0 --verbose`
+This will execute: `agent-team-release release v0.9.0 --verbose`

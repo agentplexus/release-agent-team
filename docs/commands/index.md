@@ -32,7 +32,7 @@ These flags are available for all commands:
 Run before pushing to catch issues early:
 
 ```bash
-release-agent-team check
+agent-team-release check
 ```
 
 ### Release Readiness
@@ -40,7 +40,7 @@ release-agent-team check
 Check if the project is ready for release:
 
 ```bash
-release-agent-team validate --version=v1.0.0
+agent-team-release validate --version=v1.0.0
 ```
 
 ### Full Release
@@ -48,7 +48,7 @@ release-agent-team validate --version=v1.0.0
 Execute the complete release workflow:
 
 ```bash
-release-agent-team release v1.0.0
+agent-team-release release v1.0.0
 ```
 
 ### Generate Documentation
@@ -56,7 +56,7 @@ release-agent-team release v1.0.0
 Update changelog and documentation:
 
 ```bash
-release-agent-team changelog --since=v0.9.0
-release-agent-team readme --version=v1.0.0
-release-agent-team roadmap
+agent-team-release changelog --since=v0.9.0
+agent-team-release readme --version=v1.0.0
+agent-team-release roadmap
 ```

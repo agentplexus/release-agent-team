@@ -13,10 +13,10 @@ import (
 	multiagentspec "github.com/agentplexus/multi-agent-spec/sdk/go"
 	"github.com/spf13/cobra"
 
-	"github.com/agentplexus/release-agent-team/pkg/checks"
-	"github.com/agentplexus/release-agent-team/pkg/config"
-	"github.com/agentplexus/release-agent-team/pkg/detect"
-	"github.com/agentplexus/release-agent-team/pkg/report"
+	"github.com/agentplexus/agent-team-release/pkg/checks"
+	"github.com/agentplexus/agent-team-release/pkg/config"
+	"github.com/agentplexus/agent-team-release/pkg/detect"
+	"github.com/agentplexus/agent-team-release/pkg/report"
 )
 
 // Validate command flags
@@ -45,11 +45,11 @@ Validation Areas:
 The PM agent runs first and produces the version recommendation. Other agents depend on PM.
 
 Examples:
-  release-agent-team validate                    # Validate current directory
-  release-agent-team validate --version v0.2.0   # Include version-specific checks
-  release-agent-team validate --skip-qa          # Skip QA checks
-  release-agent-team validate --format team      # Team status report format
-  release-agent-team validate -v                 # Verbose output`,
+  agent-team-release validate                    # Validate current directory
+  agent-team-release validate --version v0.2.0   # Include version-specific checks
+  agent-team-release validate --skip-qa          # Skip QA checks
+  agent-team-release validate --format team      # Team status report format
+  agent-team-release validate -v                 # Verbose output`,
 	Args: cobra.MaximumNArgs(1),
 	Run:  runValidate,
 }

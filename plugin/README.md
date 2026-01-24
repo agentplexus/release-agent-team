@@ -56,7 +56,7 @@ Classifies commits according to conventional commits specification.
 
 - `git` - Version control
 - `gh` - GitHub CLI (for CI status)
-- `release-agent-team` - Release automation CLI
+- `agent-team-release` - Release automation CLI
 - `schangelog` - Changelog generation
 - `sroadmap` - Roadmap generation
 
@@ -95,9 +95,9 @@ checks:
 User: Create a release for v1.0.0
 
 Claude: I'll help you create a release for v1.0.0. Let me first run the validation checks...
-[Runs release-agent-team check]
+[Runs agent-team-release check]
 All checks passed! Now executing the release workflow...
-[Runs release-agent-team release v1.0.0]
+[Runs agent-team-release release v1.0.0]
 ```
 
 ### Check Next Version
@@ -116,7 +116,7 @@ Based on 3 new features and 2 bug fixes, I suggest v0.9.0.
 User: Preview the release for v2.0.0
 
 Claude: I'll do a dry run to preview the release...
-[Runs release-agent-team release v2.0.0 --dry-run]
+[Runs agent-team-release release v2.0.0 --dry-run]
 ```
 
 ## License

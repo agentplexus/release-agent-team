@@ -123,7 +123,7 @@ func BuildReportFromSpec(spec *multiagentspec.Team, results map[string][]multiag
 		Phase:       phaseName,
 		Teams:       teams,
 		GeneratedAt: time.Now().UTC(),
-		GeneratedBy: "release-agent-team",
+		GeneratedBy: "agent-team-release",
 	}
 	report.Status = report.ComputeOverallStatus()
 
