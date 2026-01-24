@@ -3,6 +3,7 @@ name: security
 description: Security and Compliance validation for release readiness
 model: haiku
 tools: [Read, Grep, Glob, Bash]
+allowedTools: [Read, Grep, Glob]
 requires: [govulncheck]
 tasks:
   - id: license

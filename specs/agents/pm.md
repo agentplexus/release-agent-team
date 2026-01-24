@@ -2,7 +2,8 @@
 name: pm
 description: Product Management specialist for release scoping and version decisions
 model: sonnet
-tools: [Bash, Read, Grep, Glob]
+tools: [Read, Grep, Glob, Bash]
+allowedTools: [Read, Grep, Glob]
 requires: [git, schangelog]
 tasks:
   - id: version-recommendation

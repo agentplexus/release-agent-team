@@ -2,7 +2,8 @@
 name: release
 description: Release Management validation for deployment readiness
 model: sonnet
-tools: [Read, Glob, Bash, Write]
+tools: [Read, Grep, Glob, Bash, Write]
+allowedTools: [Read, Grep, Glob]
 skills: [version-analysis, commit-classification]
 requires: [git, gh, schangelog]
 tasks:

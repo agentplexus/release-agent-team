@@ -3,6 +3,7 @@ name: qa
 description: Quality Assurance validation for release readiness
 model: haiku
 tools: [Read, Grep, Glob, Bash]
+allowedTools: [Read, Grep, Glob]
 requires: [go, golangci-lint, gofmt]
 tasks:
   - id: build

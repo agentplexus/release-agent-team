@@ -3,6 +3,7 @@ name: documentation
 description: Documentation validation for release readiness
 model: haiku
 tools: [Read, Glob, Write, Bash]
+allowedTools: [Read, Glob]
 requires: [schangelog]
 tasks:
   - id: readme

@@ -3,6 +3,7 @@ name: release-coordinator
 description: Orchestrates software releases including CI verification and Git tagging
 model: sonnet
 tools: [Read, Grep, Glob, Bash, Edit, Write]
+allowedTools: [Read, Grep, Glob]
 skills: [version-analysis, commit-classification]
 requires: [git, gh, releaseagent, schangelog, sroadmap, mkdocs]
 tasks:
