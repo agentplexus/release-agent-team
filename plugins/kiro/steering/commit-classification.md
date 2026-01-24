@@ -1,5 +1,7 @@
 # Commit Classification
 
+Classifies commits according to conventional commits specification and maps them to changelog categories
+
 Guidelines for classifying commits using Conventional Commits specification.
 
 ## Commit Types

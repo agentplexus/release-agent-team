@@ -1,5 +1,7 @@
 # Version Analysis
 
+Analyzes git history to determine semantic version bumps based on conventional commits
+
 Guidelines for determining semantic versions based on changes.
 
 ## Semantic Versioning
