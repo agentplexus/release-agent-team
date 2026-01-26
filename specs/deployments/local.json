@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/agentplexus/multi-agent-spec/main/schema/deployment/deployment.schema.json",
+  "team": "agent-team-release",
+  "targets": [
+    {
+      "name": "local-claude",
+      "platform": "claude-code",
+      "mode": "single-process",
+      "priority": "p1",
+      "output": ".claude/agents",
+      "config": {
+        "agentDir": ".claude/agents",
+        "format": "markdown"
+      }
+    },
+    {
+      "name": "dist-claude",
+      "platform": "claude-code",
+      "mode": "single-process",
+      "priority": "p1",
+      "output": "plugins/claude/agents",
+      "config": {
+        "agentDir": "plugins/claude/agents",
+        "format": "markdown"
+      }
+    },
+    {
+      "name": "local-kiro",
+      "platform": "kiro-cli",
+      "mode": "single-process",
+      "priority": "p1",
+      "output": "plugins/kiro/agents",
+      "config": {
+        "pluginDir": "plugins/kiro",
+        "format": "json"
+      }
+    },
+    {
+      "name": "local-gemini",
+      "platform": "gemini-cli",
+      "mode": "single-process",
+      "priority": "p2",
+      "output": "plugins/gemini",
+      "config": {
+        "model": "gemini-2.0-flash",
+        "configDir": ".gemini"
+      }
+    }
+  ]
+}

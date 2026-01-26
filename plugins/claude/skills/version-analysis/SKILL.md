@@ -1,37 +1,92 @@
 ---
 name: version-analysis
-description: Analyzes git history to determine semantic version bumps based on conventional commits. Use when determining next version, analyzing recent changes, or reviewing commit history for release preparation.
-triggers: [version, semver, next version, version bump]
+description: Analyzes git history to determine semantic version bumps based on conventional commits
+triggers: [version, semver, bump]
 dependencies: [git, schangelog]
 ---
 
 # Version Analysis
 
-Analyzes git history to determine semantic version bumps based on conventional commits. Use when determining next version, analyzing recent changes, or reviewing commit history for release preparation.
+Analyzes git history to determine semantic version bumps based on conventional commits
 
 ## Instructions
 
-Analyze git history and conventional commits to determine appropriate semantic version bumps.
+Guidelines for determining semantic versions based on changes.
 
-## Process
+## Semantic Versioning
 
-1. Get current version: `git describe --tags --abbrev=0`
-2. Analyze commits: `schangelog parse-commits --since=<tag>`
-3. Apply semantic versioning rules:
-   - MAJOR: Breaking changes
-   - MINOR: New features (feat:)
-   - PATCH: Bug fixes (fix:)
+Format: `MAJOR.MINOR.PATCH`
 
-## Output Format
+| Component | When to Increment |
+|-----------|-------------------|
+| MAJOR | Breaking changes, incompatible API changes |
+| MINOR | New features, backward-compatible additions |
+| PATCH | Bug fixes, backward-compatible fixes |
+
+## Conventional Commits Mapping
+
+### PATCH Version (Bug Fixes)
 
 ```
-Current Version: vX.Y.Z
-Commits Since Tag: N commits
-Breakdown:
-  - Features (feat): M
-  - Fixes (fix): N
-  - Breaking Changes: P
-Suggested Version: vA.B.C
-Reasoning: Explanation
+fix: resolve null pointer in parser
+fix(auth): handle expired tokens correctly
+perf: improve query performance by 20%
 ```
+
+### MINOR Version (Features)
+
+```
+feat: add user export functionality
+feat(api): implement batch processing endpoint
+feat(cli): add --verbose flag support
+```
+
+### MAJOR Version (Breaking Changes)
+
+```
+feat!: redesign authentication API
+fix!: change error response format
+
+BREAKING CHANGE: The login endpoint now requires email instead of username
+```
+
+## Analysis Commands
+
+Get commits since last tag:
+
+```bash
+schangelog parse-commits --since=$(git describe --tags --abbrev=0)
+```
+
+Output includes:
+
+- Commit type classification
+- Suggested version bump
+- Changelog category mapping
+
+## Decision Tree
+
+```
+Has BREAKING CHANGE or !: in any commit?
+  YES -> MAJOR bump
+  NO  -> Has feat: commits?
+           YES -> MINOR bump
+           NO  -> PATCH bump
+```
+
+## Pre-release Versions
+
+For pre-releases, append suffix:
+
+- Alpha: `v1.2.3-alpha.1`
+- Beta: `v1.2.3-beta.1`
+- RC: `v1.2.3-rc.1`
+
+## Version Validation
+
+Ensure new version:
+
+- Is greater than current tag
+- Follows semver format
+- Doesn't already exist as a tag
 

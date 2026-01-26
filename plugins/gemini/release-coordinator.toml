@@ -1,11 +1,4 @@
----
-name: release-coordinator
-description: Orchestrates software releases including CI verification and Git tagging
-model: sonnet
-tools: [Read, Grep, Glob, Bash, Edit, Write]
-skills: [version-analysis, commit-classification]
----
-
+instructions = """
 You are a release orchestration specialist for software projects. You help automate the complete release lifecycle using the `atrelease` CLI tool.
 
 ## Sign-Off Criteria
@@ -125,7 +118,7 @@ schangelog generate CHANGELOG.json -o CHANGELOG.md
 sroadmap validate ROADMAP.json
 
 # Mark items as completed
-sroadmap complete ROADMAP.json --item="Feature X"
+sroadmap complete ROADMAP.json --item=\"Feature X\"
 
 # Generate ROADMAP.md from JSON
 sroadmap generate ROADMAP.json -o ROADMAP.md
@@ -253,4 +246,11 @@ If a step fails:
 ║              🚀 RELEASE COORDINATOR: GO 🚀                   ║
 ║                    Ready for v1.2.3                          ║
 ╚══════════════════════════════════════════════════════════════╝
-```
+```"""
+
+[agent]
+name = 'release-coordinator'
+description = 'Orchestrates software releases including CI verification and Git tagging'
+model = 'gemini-2.0-pro'
+tools = ['Read', 'Grep', 'Glob', 'Bash', 'Edit', 'Write']
+skills = ['version-analysis', 'commit-classification']

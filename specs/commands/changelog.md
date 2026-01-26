@@ -1,35 +1,15 @@
 ---
+name: changelog
 description: Generate changelog entries for the specified version
+arguments: [version]
+dependencies: [schangelog, git]
+process:
+  - Get current version from latest git tag
+  - Parse commits since that tag using schangelog
+  - Classify commits by type (feat, fix, docs, etc.)
+  - Generate changelog entries in CHANGELOG.json
+  - Regenerate CHANGELOG.md
 ---
-
-# Changelog
-
-Generate changelog entries for the specified version
-
-## Usage
-
-```
-/changelog <version>
-```
-
-## Arguments
-
-- **version** (required): 
-
-## Process
-
-1. Get current version from latest git tag
-2. Parse commits since that tag using schangelog
-3. Classify commits by type (feat, fix, docs, etc.)
-4. Generate changelog entries in CHANGELOG.json
-5. Regenerate CHANGELOG.md
-
-## Dependencies
-
-- `schangelog`
-- `git`
-
-## Instructions
 
 Generate changelog entries for the specified version based on commits since the last tag.
 

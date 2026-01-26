@@ -1,25 +1,15 @@
 ---
+name: check
 description: Run validation checks on the current repository
+dependencies: [atrelease]
+process:
+  - Detect project language(s)
+  - Run language-specific build checks
+  - Run test suite
+  - Run linter
+  - Check code formatting
+  - Report pass/fail status for each check
 ---
-
-# Check
-
-Run validation checks on the current repository
-
-## Process
-
-1. Detect project language(s)
-2. Run language-specific build checks
-3. Run test suite
-4. Run linter
-5. Check code formatting
-6. Report pass/fail status for each check
-
-## Dependencies
-
-- `atrelease`
-
-## Instructions
 
 Run all validation checks for the current repository without making any changes.
 

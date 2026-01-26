@@ -5,9 +5,4 @@ name = 'check'
 description = 'Run validation checks on the current repository'
 
 [content]
-instructions = "Run all validation checks for the current repository without making any changes.\n\n## Go Projects\n- `go build ./...` - Compilation\n- `go test ./...` - Unit tests\n- `golangci-lint run` - Linting\n- `gofmt` - Formatting\n- `go mod tidy` - Dependencies\n\n## TypeScript/JavaScript Projects\n- `npm test` or `yarn test` - Tests\n- `eslint` - Linting\n- `prettier --check` - Formatting\n- `tsc --noEmit` - Type checking"
-
-[[examples]]
-description = 'Run checks'
-input = '/release-agent:check'
-output = 'atrelease check --verbose'
+instructions = "Run all validation checks for the current repository without making any changes.\n\n## Go Projects\n\n- `go build ./...` - Compilation\n- `go test ./...` - Unit tests\n- `golangci-lint run` - Linting\n- `gofmt` - Formatting\n- `go mod tidy` - Dependencies\n\n## TypeScript/JavaScript Projects\n\n- `npm test` or `yarn test` - Tests\n- `eslint` - Linting\n- `prettier --check` - Formatting\n- `tsc --noEmit` - Type checking\n\n## Usage\n\n```\n/agent-team-release:check\n```\n\n## Examples\n\nRun checks:\n\n```\n/agent-team-release:check\n```\n\nExecutes: `atrelease check --verbose`"

@@ -1,25 +1,14 @@
 ---
+name: version-next
 description: Analyze commits and suggest next semantic version
+dependencies: [git, schangelog]
+process:
+  - Get current version from latest git tag
+  - Parse commits since that tag
+  - Classify commits by type
+  - Determine version bump (major/minor/patch)
+  - Suggest next version with reasoning
 ---
-
-# Version Next
-
-Analyze commits and suggest next semantic version
-
-## Process
-
-1. Get current version from latest git tag
-2. Parse commits since that tag
-3. Classify commits by type
-4. Determine version bump (major/minor/patch)
-5. Suggest next version with reasoning
-
-## Dependencies
-
-- `git`
-- `schangelog`
-
-## Instructions
 
 Analyze git history since the last tag and suggest the next semantic version based on conventional commits.
 
