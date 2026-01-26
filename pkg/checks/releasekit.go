@@ -1,10 +1,8 @@
 package checks
 
 import (
-	"encoding/json"
 	"fmt"
 	"os/exec"
-	"strings"
 
 	multiagentspec "github.com/agentplexus/multi-agent-spec/sdk/go"
 )
@@ -147,36 +145,3 @@ func RunReleasekitRaw(dir string, opts Options) (*multiagentspec.AgentResult, er
 	return multiagentspec.ParseAgentResult(output)
 }
 
-// buildReleasekitArgs constructs the command line arguments for releasekit.
-func buildReleasekitArgs(dir string, opts Options) []string {
-	args := []string{"validate", "--format", "json"}
-
-	if !opts.Lint {
-		args = append(args, "--no-lint")
-	}
-	if !opts.Test {
-		args = append(args, "--no-test")
-	}
-	if opts.Coverage {
-		args = append(args, "--coverage")
-	}
-	if opts.Verbose {
-		args = append(args, "--verbose")
-	}
-
-	args = append(args, dir)
-	return args
-}
-
-// parseReleasekitOutput parses JSON output from releasekit into AgentResult.
-func parseReleasekitOutput(data []byte) (*multiagentspec.AgentResult, error) {
-	var result multiagentspec.AgentResult
-	if err := json.Unmarshal(data, &result); err != nil {
-		// Try to extract any useful error info
-		if strings.Contains(string(data), "error") {
-			return nil, fmt.Errorf("releasekit error: %s", string(data))
-		}
-		return nil, fmt.Errorf("invalid JSON from releasekit: %w", err)
-	}
-	return &result, nil
-}
