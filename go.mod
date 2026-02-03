@@ -3,7 +3,7 @@ module github.com/agentplexus/agent-team-release
 go 1.24.0
 
 require (
-	github.com/agentplexus/assistantkit v0.8.0
+	github.com/agentplexus/assistantkit v0.9.0
 	github.com/agentplexus/multi-agent-spec/sdk/go v0.5.0
 	github.com/spf13/cobra v1.10.2
 	github.com/toon-format/toon-go v0.0.0-20251202084852-7ca0e27c4e8c
